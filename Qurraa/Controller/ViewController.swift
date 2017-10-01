@@ -15,14 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var readerTableView: UITableView!
     
-    //var arrRes = [[String:AnyObject]]()
     var rciters = [Reciter]()
-    var reciter = Reciter()
-    
-    var numberOfRow = 0
-    
-    
-    
     
     //Constant
     let RECITERS_URL = "http://mp3quran.net/api/_english.json"
@@ -39,6 +32,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         readerTableView.rowHeight = UITableViewAutomaticDimension
         readerTableView.estimatedRowHeight = readerTableView.rowHeight
+        
+        
     }
 
     //MARK: - Networking
@@ -73,23 +68,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func updateRecitersData(json: JSON) {
         
-        numberOfRow = json["reciters"].arrayValue.count
-        var dec = json["reciters"].dictionaryObject
+       
         
         
         
-//        for reciterJSON in json["reciters"].arrayValue {
-//            self.rciters.append(reciter)
-//            self.reciter.name = reciterJSON["name"].stringValue
-//            self.reciter.rewaya = reciterJSON["rewaya"].stringValue
-//            self.reciter.letter = reciterJSON["letter"].stringValue
-//            print( reciterJSON["name"].stringValue)
-        
+        for reciterJSON in json["reciters"].arrayValue {
+            let reciter = Reciter()
             
+            reciter.name = reciterJSON["name"].stringValue
+            reciter.rewaya = reciterJSON["rewaya"].stringValue
+            reciter.letter = reciterJSON["letter"].stringValue
+            self.rciters.append(reciter)
             
-        }
-        
-        print(rciters.count)
+    }
       
         DispatchQueue.main.async {
             self.readerTableView.reloadData()
@@ -101,20 +92,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     
-//        if let item = json["reciters"].arrayObject {
-//
-//            self.arrRes = item as! [[String: AnyObject]]
-//        }
-//        if self.arrRes.count > 0 {
-//            self.readerTableView.reloadData()
-//        }
-    
-        
-        
-        
-        
-        
-        //reciters.append(reciter)
         
     
     
@@ -124,12 +101,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //TODO: Declare cellForRowAtIndexPath here:
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomReaderCell", for: indexPath) as! CustomReaderCell
-        
-        //var dict = arrRes[indexPath.row]
+    
         cell.readerName.text = self.rciters[indexPath.row].name
         cell.rewayaLabel.text = self.rciters[indexPath.row].rewaya
-        //cell.readerName.text = dict["name"] as? String
-        //cell.rewayaLabel.text = dict["rewaya"] as? String
         
         
         return cell
@@ -144,8 +118,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //TODO: Declare numberOfRowsInSection here:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRow
-        //return arrRes.count
+        return self.rciters.count
+        
     }
 
 }

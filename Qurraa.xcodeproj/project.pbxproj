@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29DE1BF9C1AABA1AEBBCF630 /* Pods_Qurraa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CB9B0EEAFE4AECCF4870AF /* Pods_Qurraa.framework */; };
 		A97EE7121F80F5E90062B374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EE7111F80F5E90062B374 /* AppDelegate.swift */; };
 		A97EE7141F80F5E90062B374 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EE7131F80F5E90062B374 /* ViewController.swift */; };
 		A97EE7171F80F5EA0062B374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE7151F80F5EA0062B374 /* Main.storyboard */; };
 		A97EE7191F80F5EA0062B374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97EE7181F80F5EA0062B374 /* Assets.xcassets */; };
 		A97EE71C1F80F5EA0062B374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE71A1F80F5EA0062B374 /* LaunchScreen.storyboard */; };
+		A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */; };
+		A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF7B1F81100600CF1569 /* Reciter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		404FB1139A34E8A059C883B7 /* Pods-Qurraa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qurraa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa.release.xcconfig"; sourceTree = "<group>"; };
+		83CB9B0EEAFE4AECCF4870AF /* Pods_Qurraa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qurraa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97EE70E1F80F5E90062B374 /* Qurraa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qurraa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97EE7111F80F5E90062B374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A97EE7131F80F5E90062B374 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +27,9 @@
 		A97EE7181F80F5EA0062B374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97EE71B1F80F5EA0062B374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A97EE71D1F80F5EA0062B374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomReaderCell.swift; sourceTree = "<group>"; };
+		A9D6DF7B1F81100600CF1569 /* Reciter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reciter.swift; sourceTree = "<group>"; };
+		E06340A47D44D9D6E410486F /* Pods-Qurraa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qurraa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DE1BF9C1AABA1AEBBCF630 /* Pods_Qurraa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17F1F2D88EEA4ED4C0C9D809 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E06340A47D44D9D6E410486F /* Pods-Qurraa.debug.xcconfig */,
+				404FB1139A34E8A059C883B7 /* Pods-Qurraa.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4DC824B40EC0C065821DCC9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83CB9B0EEAFE4AECCF4870AF /* Pods_Qurraa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A97EE7051F80F5E90062B374 = {
 			isa = PBXGroup;
 			children = (
 				A97EE7101F80F5E90062B374 /* Qurraa */,
 				A97EE70F1F80F5E90062B374 /* Products */,
+				17F1F2D88EEA4ED4C0C9D809 /* Pods */,
+				4DC824B40EC0C065821DCC9A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +82,40 @@
 		A97EE7101F80F5E90062B374 /* Qurraa */ = {
 			isa = PBXGroup;
 			children = (
-				A97EE7111F80F5E90062B374 /* AppDelegate.swift */,
-				A97EE7131F80F5E90062B374 /* ViewController.swift */,
-				A97EE7151F80F5EA0062B374 /* Main.storyboard */,
+				A97EE7231F80F6030062B374 /* Model */,
+				A97EE7241F80F60B0062B374 /* View */,
+				A97EE7251F80F6110062B374 /* Controller */,
 				A97EE7181F80F5EA0062B374 /* Assets.xcassets */,
-				A97EE71A1F80F5EA0062B374 /* LaunchScreen.storyboard */,
 				A97EE71D1F80F5EA0062B374 /* Info.plist */,
 			);
 			path = Qurraa;
+			sourceTree = "<group>";
+		};
+		A97EE7231F80F6030062B374 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A9D6DF7B1F81100600CF1569 /* Reciter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A97EE7241F80F60B0062B374 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A97EE7151F80F5EA0062B374 /* Main.storyboard */,
+				A97EE71A1F80F5EA0062B374 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A97EE7251F80F6110062B374 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A97EE7111F80F5E90062B374 /* AppDelegate.swift */,
+				A97EE7131F80F5E90062B374 /* ViewController.swift */,
+				A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A97EE7201F80F5EA0062B374 /* Build configuration list for PBXNativeTarget "Qurraa" */;
 			buildPhases = (
+				62562F634ED663A4C5434F13 /* [CP] Check Pods Manifest.lock */,
 				A97EE70A1F80F5E90062B374 /* Sources */,
 				A97EE70B1F80F5E90062B374 /* Frameworks */,
 				A97EE70C1F80F5E90062B374 /* Resources */,
+				1E66CFF71A4671BD3CBA0F2B /* [CP] Embed Pods Frameworks */,
+				5C3552D0FBABEB8E762E8393 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,6 +188,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1E66CFF71A4671BD3CBA0F2B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C3552D0FBABEB8E762E8393 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		62562F634ED663A4C5434F13 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Qurraa-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A97EE70A1F80F5E90062B374 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -138,6 +251,8 @@
 			files = (
 				A97EE7141F80F5E90062B374 /* ViewController.swift in Sources */,
 				A97EE7121F80F5E90062B374 /* AppDelegate.swift in Sources */,
+				A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */,
+				A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +387,7 @@
 		};
 		A97EE7211F80F5EA0062B374 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E06340A47D44D9D6E410486F /* Pods-Qurraa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -286,6 +402,7 @@
 		};
 		A97EE7221F80F5EA0062B374 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 404FB1139A34E8A059C883B7 /* Pods-Qurraa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

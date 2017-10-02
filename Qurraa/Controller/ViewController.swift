@@ -10,15 +10,24 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
     
     @IBOutlet weak var readerTableView: UITableView!
     
     var rciters = [Reciter]()
+    var readerDict = [String: [String]]()
+    var readerSectionTitles = [String]()
+    
+    //Declare var to store search result
+    var searchResult: [Reciter] = []
+    
+    //Declare the searchCotroller variable
+    var searchController: UISearchController!
     
     //Constant
     let RECITERS_URL = "http://mp3quran.net/api/_english.json"
+    
     
     
     override func viewDidLoad() {
@@ -34,8 +43,42 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         readerTableView.estimatedRowHeight = readerTableView.rowHeight
         
         
+        searchController = UISearchController(searchResultsController: nil)
+        readerTableView.tableHeaderView = searchController.searchBar
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        
+        searchController.searchBar.placeholder = "Search reciters..."
+        searchController.searchBar.tintColor = UIColor.white
+        searchController.searchBar.barTintColor = UIColor(red: 95.0/255.0, green:
+            113.0/255.0, blue: 135.0/255.0, alpha: 1.0)
     }
-
+    
+    
+    //MARK: - Filtering
+    /***************************************************************/
+    
+    func filterContent(for searchText: String) {
+        searchResult = rciters.filter({ (rciter) -> Bool in
+            if let name = rciter.name {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+            return false
+        })
+    }
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            readerTableView.reloadData()
+        }
+        
+        
+    }
+    
     //MARK: - Networking
     /***************************************************************/
     
@@ -48,8 +91,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Success! Got the reciters data")
                 
                 let RecitersJSON: JSON = JSON(response.result.value!)
-                //print(RecitersJSON)
                 self.updateRecitersData(json: RecitersJSON)
+                // Generate the rciters dictionary
+                self.createReaderDict()
+                
                 
             } else {
                 print("Error \(response.result.error)")
@@ -80,20 +125,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             reciter.letter = reciterJSON["letter"].stringValue
             self.rciters.append(reciter)
             
+            
+            
     }
       
+        
+        
         DispatchQueue.main.async {
+            
             self.readerTableView.reloadData()
             
         }
     }
 
+    //MARK: - IndexLisrt
+    /************************************************/
+    
+    func createReaderDict() {
         
-    
-    
-    
+        for rciter in 0..<rciters.count  {
+            // Get the first letter of the rciter name and build the dictionary
+            let reader = rciters[rciter].name!
+            let firstLetterIndex = reader.index(reader.startIndex, offsetBy: 0)
+            let readerKey = String(reader[...firstLetterIndex])
         
-    
+        if var readerValues = readerDict[readerKey] {
+            readerValues.append(reader)
+            readerDict[readerKey]  = readerValues
+        } else {
+            readerDict[readerKey] = [reader]
+        }
+    }
+        readerSectionTitles = [String](readerDict.keys)
+        readerSectionTitles = readerSectionTitles.sorted(by: {$0 < $1})
+    }
     
     
     //MARK: - TableView DataSource Methods
@@ -101,26 +166,66 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //TODO: Declare cellForRowAtIndexPath here:
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomReaderCell", for: indexPath) as! CustomReaderCell
-    
-        cell.readerName.text = self.rciters[indexPath.row].name
-        cell.rewayaLabel.text = self.rciters[indexPath.row].rewaya
         
+        let reader = (searchController.isActive) ? searchResult[indexPath.row] : self.rciters[indexPath.row]
+        
+            cell.readerName.text = reader.name
+            cell.rewayaLabel.text = reader.rewaya
         
         return cell
     }
     
     //TODO: Declare numberOfSections here:
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+         if searchController.isActive {
+            return 1
+            
+        }
+         else {
+        return readerSectionTitles.count
+        }
     }
+    //TODO: display a header title in each section
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if   searchController.isActive {
+            return ""
+        } else {
+        
+        return readerSectionTitles[section]
+            }
+    }
+    
     
     
     //TODO: Declare numberOfRowsInSection here:
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rciters.count
         
+        if searchController.isActive {
+            return searchResult.count
+        } else {
+            let readerKey = readerSectionTitles[section]
+            guard let readerValues = readerDict[readerKey] else {
+                return 0
+            }
+            
+        return readerValues.count
+        }
     }
+    
+    
+    
+    
+    
 
 }
+
+
+
+
+
+
+
+
+
+
 

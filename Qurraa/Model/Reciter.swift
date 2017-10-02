@@ -11,9 +11,9 @@ import Foundation
 
 class Reciter {
     
-    var name: String = ""
-    var rewaya: String = ""
-    var letter: String = ""
+    var name: String? = ""
+    var rewaya: String? = ""
+    var letter: String? = ""
     
     
     

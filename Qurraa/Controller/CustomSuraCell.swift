@@ -1,18 +1,17 @@
 //
-//  CustomReaderCell.swift
+//  SuraTableViewCell.swift
 //  Qurraa
 //
-//  Created by Ahmad Ahrbi on 11/01/1439 AH.
+//  Created by Ahmad Ahrbi on 14/01/1439 AH.
 //  Copyright © 1439 Ahmad Ahrbi. All rights reserved.
 //
 
 import UIKit
 
-
-class CustomReaderCell: UITableViewCell {
+class CustomSuraCell: UITableViewCell {
     
-    @IBOutlet weak var readerName: UILabel!
-    @IBOutlet weak var rewayaLabel: UILabel!
+    @IBOutlet weak var suraName: UILabel!
+    
     
 
     override func awakeFromNib() {

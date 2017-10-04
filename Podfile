@@ -8,5 +8,8 @@ target 'Qurraa' do
 
     pod 'Alamofire'
     pod 'SwiftyJSON'
+    
+    
+    
 
 end

@@ -14,8 +14,16 @@ class Reciter {
     var name: String? = ""
     var rewaya: String? = ""
     var letter: String? = ""
+    var suras: String? = ""
     
     
     
+    
+}
+
+
+class Sura {
+    var id: Int? = 0
+    var name: String? = ""
     
 }

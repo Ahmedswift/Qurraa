@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var readerTableView: UITableView!
     
@@ -53,6 +54,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchController.searchBar.tintColor = UIColor.white
         searchController.searchBar.barTintColor = UIColor(red: 95.0/255.0, green:
             113.0/255.0, blue: 135.0/255.0, alpha: 1.0)
+        
+       
+        
+        
+        
     }
     
     
@@ -123,6 +129,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             reciter.name = reciterJSON["name"].stringValue
             reciter.rewaya = reciterJSON["rewaya"].stringValue
             reciter.letter = reciterJSON["letter"].stringValue
+            reciter.suras = reciterJSON["suras"].stringValue
             self.rciters.append(reciter)
             
             
@@ -213,7 +220,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    
+    // prepatre for sgue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "CustomSuraCell" {
+           if let indexPath = readerTableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as! SuraViewController
+            DispatchQueue.main.async {
+                
+                destinationController.readerName.text = self.rciters[indexPath.row].name
+                
+            }
+            
+            }
+                
+            
+        }
+    }
     
     
 

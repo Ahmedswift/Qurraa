@@ -1,20 +1,19 @@
 //
-//  CustomReaderCell.swift
+//  MenuCustomCell.swift
 //  Qurraa
 //
-//  Created by Ahmad Ahrbi on 11/01/1439 AH.
+//  Created by Ahmad Ahrbi on 13/01/1439 AH.
 //  Copyright © 1439 Ahmad Ahrbi. All rights reserved.
 //
 
 import UIKit
 
-
-class CustomReaderCell: UITableViewCell {
+class MenuCustomCell: UITableViewCell {
     
-    @IBOutlet weak var readerName: UILabel!
-    @IBOutlet weak var rewayaLabel: UILabel!
+    @IBOutlet weak var menuImg: UIImageView!
     
-
+    @IBOutlet weak var menuTxt: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

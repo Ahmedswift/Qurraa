@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var rciters = [Reciter]()
     var readerDict = [String: [String]]()
     var readerSectionTitles = [String]()
+    var surasNumbers = [String]()
     
     //Declare var to store search result
     var searchResult: [Reciter] = []
@@ -100,6 +101,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.updateRecitersData(json: RecitersJSON)
                 // Generate the rciters dictionary
                 self.createReaderDict()
+                self.suraNumbers()
+                
+                
+                
                 
                 
             } else {
@@ -129,7 +134,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             reciter.name = reciterJSON["name"].stringValue
             reciter.rewaya = reciterJSON["rewaya"].stringValue
             reciter.letter = reciterJSON["letter"].stringValue
-            reciter.suras = reciterJSON["suras"].stringValue
+            let surasnumber = reciterJSON["suras"].stringValue
+            reciter.suras = surasnumber.components(separatedBy: ",").map{$0}
+           
+            reciter.count = reciterJSON["count"].intValue
             self.rciters.append(reciter)
             
             
@@ -166,6 +174,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         readerSectionTitles = [String](readerDict.keys)
         readerSectionTitles = readerSectionTitles.sorted(by: {$0 < $1})
     }
+    
+    
+    func suraNumbers() {
+        
+        for rciter in 0..<rciters.count {
+            let reader = rciters[rciter].name!
+            
+            
+            
+            
+            
+            
+        }
+    }
+   
     
     
     //MARK: - TableView DataSource Methods
@@ -229,6 +252,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async {
                 
                 destinationController.readerName.text = self.rciters[indexPath.row].name
+                destinationController.surasNumber =  self.rciters[indexPath.row].suras!
                 
             }
             

@@ -14,7 +14,8 @@ class Reciter {
     var name: String? = ""
     var rewaya: String? = ""
     var letter: String? = ""
-    var suras: String? = ""
+    var suras: [String]? = []
+    var count: Int? = 0
     
     
     
@@ -23,7 +24,7 @@ class Reciter {
 
 
 class Sura {
-    var id: Int? = 0
+    var id: String? = ""
     var name: String? = ""
     
 }

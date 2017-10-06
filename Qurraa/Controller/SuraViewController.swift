@@ -20,6 +20,10 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
     var SURA_URL = "http://mp3quran.net/api/_english_sura.json"
     
     var suras = [Sura]()
+    var surasDict = [String: String]()
+    var surasNumber = [String]()
+    var resultDict = [String: String]()
+
     
 
     override func viewDidLoad() {
@@ -71,6 +75,11 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let surasJSON: JSON = JSON(response.result.value!)
                 self.updateSurasData(json: surasJSON)
+                self.createSurasDict()
+                self.suraNumbers(self.surasNumber)
+                
+                
+                
                 
                 
                 
@@ -94,9 +103,10 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
         for suraJSON in json["Suras_Name"].arrayValue {
             let sura = Sura()
             
-            sura.id = suraJSON["id"].intValue
+            sura.id = suraJSON["id"].stringValue
             sura.name = suraJSON["name"].stringValue
             self.suras.append(sura)
+            
             
         }
         
@@ -104,6 +114,40 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             self.suraTableView.reloadData()
             
+        }
+    }
+    
+    
+    
+    //MARK: - suras Dictionary
+    /************************************************/
+    
+    func createSurasDict() {
+        
+        for sura in 0..<suras.count  {
+            let suraKey =  suras[sura].id!
+            let suraValue = suras[sura].name!
+            self.surasDict[suraKey] = suraValue
+            
+        }
+    }
+    
+    
+    
+    func suraNumbers(_ newArr: [String]) {
+        if newArr.count == self.suras.count {
+            resultDict = surasDict
+        } else if newArr.count < self.suras.count {
+            for item in 0..<newArr.count {
+                let number = newArr[item]
+                for key in surasDict.keys {
+                    if number == key {
+                        let value = surasDict[number]
+                        resultDict[number] = value
+                        print(resultDict)
+                    }
+                }
+            }
         }
     }
     
@@ -115,16 +159,21 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return suras.count
+        let count = resultDict.count  < suras.count ?  resultDict.count :  suras.count
+        return count
     }
     
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomSuraCell", for: indexPath) as! CustomSuraCell
+        if resultDict.count  < suras.count {
+        var sortedDic = resultDict.sorted(by: <)
+           cell.suraName.text = sortedDic[indexPath.row].value
+            
+        } else {
         
         cell.suraName.text = suras[indexPath.row].name
-        
+        }
         return cell
     }
 

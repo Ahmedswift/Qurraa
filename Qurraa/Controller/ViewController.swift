@@ -21,6 +21,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var readerSectionTitles = [String]()
     var surasNumbers = [String]()
     
+    let collection = UILocalizedIndexedCollation.current()
+    var rcitersWithSections = [[Reciter]]()
+    var sectionTitles = [String]()
+    
     //Declare var to store search result
     var searchResult: [Reciter] = []
     
@@ -99,8 +103,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 let RecitersJSON: JSON = JSON(response.result.value!)
                 self.updateRecitersData(json: RecitersJSON)
+                let (arrayReciters, arrayTitle) = self.collection.partitionObjects(array: self.rciters, collectionStringSelector: #selector(getter: Reciter.name))
+                
+                self.rcitersWithSections = arrayReciters as! [[Reciter]]
+                self.sectionTitles = arrayTitle
                 // Generate the rciters dictionary
-                self.createReaderDict()
+                //self.createReaderDict()
                 self.suraNumbers()
                 
                 
@@ -136,6 +144,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             reciter.letter = reciterJSON["letter"].stringValue
             let surasnumber = reciterJSON["suras"].stringValue
             reciter.suras = surasnumber.components(separatedBy: ",").map{$0}
+            reciter.server = reciterJSON["Server"].url
+            
            
             reciter.count = reciterJSON["count"].intValue
             self.rciters.append(reciter)
@@ -161,6 +171,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         for rciter in 0..<rciters.count  {
             // Get the first letter of the rciter name and build the dictionary
             let reader = rciters[rciter].name!
+            print(reader)
             let firstLetterIndex = reader.index(reader.startIndex, offsetBy: 0)
             let readerKey = String(reader[...firstLetterIndex])
         
@@ -197,10 +208,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomReaderCell", for: indexPath) as! CustomReaderCell
         
-        let reader = (searchController.isActive) ? searchResult[indexPath.row] : self.rciters[indexPath.row]
-        
+        //let readerKey = readerSectionTitles[indexPath.section]
+        //print(readerKey)
+        //if let suraValues = self.readerDict[readerKey] {
+//        let reader = (searchController.isActive) ? searchResult[indexPath.row] : self.rciters[indexPath.row]
+        if  (searchController.isActive) {
+            let reader = searchResult[indexPath.row]
             cell.readerName.text = reader.name
             cell.rewayaLabel.text = reader.rewaya
+        } else {
+            
+            let reciter = rcitersWithSections[indexPath.section][indexPath.row]
+            print(reciter)
+            
+            cell.readerName.text = reciter.name
+            cell.rewayaLabel.text = reciter.rewaya
+            
+//            for  item in 0..<rciters.count{
+//                if rciters[item].name!.hasPrefix(readerKey){
+//                    var rciers: [String] = [rciters[item].name!]
+//                    print(rciers)
+//
+//                    print(rciters[item].name!)
+//                    cell.readerName.text = rciers[indexPath.row]
+//                    cell.rewayaLabel.text = rciters[indexPath.row].rewaya
+//
+//                }
+//            }
+        }
+        
+        
         
         return cell
     }
@@ -212,7 +249,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         }
          else {
-        return readerSectionTitles.count
+        return sectionTitles.count
+            //readerSectionTitles.count
         }
     }
     //TODO: display a header title in each section
@@ -221,7 +259,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return ""
         } else {
         
-        return readerSectionTitles[section]
+        return sectionTitles[section]
+            //readerSectionTitles[section]
             }
     }
     
@@ -233,12 +272,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if searchController.isActive {
             return searchResult.count
         } else {
-            let readerKey = readerSectionTitles[section]
-            guard let readerValues = readerDict[readerKey] else {
-                return 0
-            }
-            
-        return readerValues.count
+            return rcitersWithSections[section].count
+//            let readerKey = readerSectionTitles[section]
+//            guard let readerValues = readerDict[readerKey] else {
+//                return 0
+//            }
+//
+//        return readerValues.count
         }
     }
     
@@ -251,24 +291,51 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let destinationController = segue.destination as! SuraViewController
             DispatchQueue.main.async {
                 
-                destinationController.readerName.text = self.rciters[indexPath.row].name
-                destinationController.surasNumber =  self.rciters[indexPath.row].suras!
-                
+                let reciter = self.rcitersWithSections[indexPath.section][indexPath.row]
+                destinationController.readerName.text = reciter.name
+                destinationController.surasNumber = reciter.suras!
+                destinationController.URL_SURAS_MP3 = reciter.server! 
+            
             }
             
             }
                 
             
-        }
+        } 
     }
     
     
+    @IBAction func unwindToFirstVC(segue:UIStoryboardSegue) { }
 
 }
 
 
 
+//extensions
 
+extension UILocalizedIndexedCollation{
+    
+    func partitionObjects(array: [AnyObject], collectionStringSelector: Selector) -> ([AnyObject],[String]){
+        var unsortedSections = [[AnyObject]]()
+        for _ in self.sectionTitles{
+            unsortedSections.append([])
+        }
+        
+        for item in array {
+            let index: Int = self.section(for: item, collationStringSelector: collectionStringSelector)
+            unsortedSections[index].append(item)
+        }
+        var sectionTitles = [String]()
+        var sections = [AnyObject]()
+        for index in 0..<unsortedSections.count {
+            if unsortedSections[index].count > 0 {
+                sectionTitles.append(self.sectionTitles[index])
+                sections.append(self.sortedArray(from: unsortedSections[index], collationStringSelector: collectionStringSelector) as AnyObject)}
+        }
+        return (sections, sectionTitles)
+    }
+    
+}
 
 
 

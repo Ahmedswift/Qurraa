@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import Foundation
 
 class SuraViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,6 +24,8 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
     var surasDict = [String: String]()
     var surasNumber = [String]()
     var resultDict = [String: String]()
+    var URL_SURAS_MP3: URL?
+    var sortedDic: [(key: String, value: String)]?
 
     
 
@@ -37,7 +40,7 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.view.insertSubview(blurEffectView, at: 0)
         
         
-        readerName.text = ""
+       
         suraTableView.delegate = self
         suraTableView.dataSource = self
         
@@ -144,7 +147,7 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if number == key {
                         let value = surasDict[number]
                         resultDict[number] = value
-                        print(resultDict)
+                        //print(resultDict)
                     }
                 }
             }
@@ -167,14 +170,71 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomSuraCell", for: indexPath) as! CustomSuraCell
         if resultDict.count  < suras.count {
-        var sortedDic = resultDict.sorted(by: <)
-           cell.suraName.text = sortedDic[indexPath.row].value
+         self.sortedDic = resultDict.sorted(by: <)
+            cell.suraName.text = sortedDic![indexPath.row].value
+
             
         } else {
         
         cell.suraName.text = suras[indexPath.row].name
+            
         }
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SurasPlayerVC" {
+            if let indexPath = suraTableView.indexPathForSelectedRow {
+                let destinationController = segue.destination as!SurasPlayerVC
+                DispatchQueue.main.async {
+                    
+                    //self.suraTableView.reloadData()
+                    
+                     
+                 
+                    if self.URL_SURAS_MP3 != nil {
+                        destinationController.selectedSuraUrl = "\(self.URL_SURAS_MP3!)"
+                        destinationController.reciterName.text = self.readerName.text
+                        
+                        if self.resultDict.count  < self.suras.count {
+                            let name = self.sortedDic![indexPath.row].value
+                            destinationController.suraTitle.text = "Surah \(name)"
+                            destinationController.suraID = self.sortedDic![indexPath.row].key
+                            print("the key:\(self.sortedDic![indexPath.row].key)")
+                            destinationController.surasDict = self.resultDict
+                            destinationController.sortedDic = self.sortedDic
+                            
+                            
+                        } else {
+                        
+                        let name = self.suras[indexPath.row].name!
+                        destinationController.suraTitle.text = "Surah \(name)"
+                        destinationController.suraID = self.suras[indexPath.row].id!
+                        destinationController.surasDict = self.surasDict
+                            let sortedDict = self.resultDict.sorted(by: <)
+                            print(sortedDict)
+                        destinationController.sortedDic = sortedDict
+                        
+                        
+                        }
+                       
+               }
+            }
+                
+
+                
+         
+            }
+        }
+    }
 
 }
+
+
+
+
+
+
+
+
+

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		29DE1BF9C1AABA1AEBBCF630 /* Pods_Qurraa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CB9B0EEAFE4AECCF4870AF /* Pods_Qurraa.framework */; };
+		A904A4021F8F90EB00573855 /* SurasPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A904A4011F8F90EB00573855 /* SurasPlayerVC.swift */; };
 		A97EE7121F80F5E90062B374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EE7111F80F5E90062B374 /* AppDelegate.swift */; };
 		A97EE7141F80F5E90062B374 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EE7131F80F5E90062B374 /* ViewController.swift */; };
 		A97EE7171F80F5EA0062B374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE7151F80F5EA0062B374 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 		A97EE71C1F80F5EA0062B374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE71A1F80F5EA0062B374 /* LaunchScreen.storyboard */; };
 		A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */; };
 		A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF7B1F81100600CF1569 /* Reciter.swift */; };
+		A9E774881F88F007009EC3D4 /* SuraPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E774871F88F007009EC3D4 /* SuraPlayerViewController.swift */; };
 		A9F40EBA1F83B7DD00448EAC /* MenuCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F40EB91F83B7DD00448EAC /* MenuCustomCell.swift */; };
 		A9F40EBC1F83B8AC00448EAC /* MenuTCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F40EBB1F83B8AC00448EAC /* MenuTCV.swift */; };
 		A9F9BB051F84FB1A0067C293 /* CustomSuraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */; };
@@ -24,6 +26,7 @@
 /* Begin PBXFileReference section */
 		404FB1139A34E8A059C883B7 /* Pods-Qurraa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qurraa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa.release.xcconfig"; sourceTree = "<group>"; };
 		83CB9B0EEAFE4AECCF4870AF /* Pods_Qurraa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qurraa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A904A4011F8F90EB00573855 /* SurasPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurasPlayerVC.swift; sourceTree = "<group>"; };
 		A97EE70E1F80F5E90062B374 /* Qurraa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qurraa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97EE7111F80F5E90062B374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A97EE7131F80F5E90062B374 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,8 +34,10 @@
 		A97EE7181F80F5EA0062B374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97EE71B1F80F5EA0062B374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A97EE71D1F80F5EA0062B374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9D52C421F89509600732879 /* Qurraa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Qurraa.entitlements; sourceTree = "<group>"; };
 		A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomReaderCell.swift; sourceTree = "<group>"; };
 		A9D6DF7B1F81100600CF1569 /* Reciter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reciter.swift; sourceTree = "<group>"; };
+		A9E774871F88F007009EC3D4 /* SuraPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuraPlayerViewController.swift; sourceTree = "<group>"; };
 		A9F40EB91F83B7DD00448EAC /* MenuCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCustomCell.swift; sourceTree = "<group>"; };
 		A9F40EBB1F83B8AC00448EAC /* MenuTCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTCV.swift; sourceTree = "<group>"; };
 		A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSuraCell.swift; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 		A97EE7101F80F5E90062B374 /* Qurraa */ = {
 			isa = PBXGroup;
 			children = (
+				A9D52C421F89509600732879 /* Qurraa.entitlements */,
 				A97EE7231F80F6030062B374 /* Model */,
 				A97EE7241F80F60B0062B374 /* View */,
 				A97EE7251F80F6110062B374 /* Controller */,
@@ -125,7 +131,9 @@
 				A9F40EB91F83B7DD00448EAC /* MenuCustomCell.swift */,
 				A9F40EBB1F83B8AC00448EAC /* MenuTCV.swift */,
 				A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */,
+				A9E774871F88F007009EC3D4 /* SuraPlayerViewController.swift */,
 				A9F9BB061F8505DF0067C293 /* SuraViewController.swift */,
+				A904A4011F8F90EB00573855 /* SurasPlayerVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -167,6 +175,14 @@
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -268,7 +284,9 @@
 				A97EE7121F80F5E90062B374 /* AppDelegate.swift in Sources */,
 				A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */,
 				A9F9BB071F8505DF0067C293 /* SuraViewController.swift in Sources */,
+				A9E774881F88F007009EC3D4 /* SuraPlayerViewController.swift in Sources */,
 				A9F40EBA1F83B7DD00448EAC /* MenuCustomCell.swift in Sources */,
+				A904A4021F8F90EB00573855 /* SurasPlayerVC.swift in Sources */,
 				A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

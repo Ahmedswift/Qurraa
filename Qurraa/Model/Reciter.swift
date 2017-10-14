@@ -9,13 +9,14 @@
 import Foundation
 
 
-class Reciter {
+class Reciter: NSObject {
     
-    var name: String? = ""
+    @objc var name: String? = ""
     var rewaya: String? = ""
     var letter: String? = ""
     var suras: [String]? = []
     var count: Int? = 0
+    var server: URL?
     
     
     

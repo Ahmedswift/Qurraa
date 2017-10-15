@@ -21,11 +21,9 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
     var SURA_URL = "http://mp3quran.net/api/_english_sura.json"
     
     var suras = [Sura]()
-    var surasDict = [String: String]()
     var surasNumber = [String]()
-    var resultDict = [String: String]()
     var URL_SURAS_MP3: URL?
-    var sortedDic: [(key: String, value: String)]?
+    var currentSuras = [Sura]()
 
     
 
@@ -78,14 +76,7 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 let surasJSON: JSON = JSON(response.result.value!)
                 self.updateSurasData(json: surasJSON)
-                self.createSurasDict()
-                self.suraNumbers(self.surasNumber)
-                
-                
-                
-                
-                
-                
+                self.updateSuras()
             } else {
                 print("Error \(response.result.error)")
                 
@@ -120,35 +111,15 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-    
-    //MARK: - suras Dictionary
-    /************************************************/
-    
-    func createSurasDict() {
-        
-        for sura in 0..<suras.count  {
-            let suraKey =  suras[sura].id!
-            let suraValue = suras[sura].name!
-            self.surasDict[suraKey] = suraValue
-            
-        }
-    }
-    
-    
-    
-    func suraNumbers(_ newArr: [String]) {
-        if newArr.count == self.suras.count {
-            resultDict = surasDict
-        } else if newArr.count < self.suras.count {
-            for item in 0..<newArr.count {
-                let number = newArr[item]
-                for key in surasDict.keys {
-                    if number == key {
-                        let value = surasDict[number]
-                        resultDict[number] = value
-                        //print(resultDict)
-                    }
+   
+    func updateSuras() {
+        for sura in 0..<suras.count {
+            for index in 0..<surasNumber.count {
+                let newSura = Sura()
+                if surasNumber[index] == suras[sura].id {
+                    newSura.id = suras[sura].id
+                    newSura.name = suras[sura].name
+                    self.currentSuras.append(newSura)
                 }
             }
         }
@@ -162,67 +133,39 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = resultDict.count  < suras.count ?  resultDict.count :  suras.count
-        return count
+
+        //let count = resultDict.count  < suras.count ?  resultDict.count :  suras.count
+        return currentSuras.count
     }
     
     
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomSuraCell", for: indexPath) as! CustomSuraCell
-        if resultDict.count  < suras.count {
-         self.sortedDic = resultDict.sorted(by: <)
-            cell.suraName.text = sortedDic![indexPath.row].value
-
-            
-        } else {
         
-        cell.suraName.text = suras[indexPath.row].name
-            
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CustomSuraCell", for: indexPath) as! CustomSuraCell
+        cell.suraName.text = currentSuras[indexPath.row].name
         return cell
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SurasPlayerVC" {
             if let indexPath = suraTableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as!SurasPlayerVC
                 DispatchQueue.main.async {
-                    
-                    //self.suraTableView.reloadData()
-                    
-                     
-                 
+            
                     if self.URL_SURAS_MP3 != nil {
+                        
                         destinationController.selectedSuraUrl = "\(self.URL_SURAS_MP3!)"
                         destinationController.reciterName.text = self.readerName.text
-                        
-                        if self.resultDict.count  < self.suras.count {
-                            let name = self.sortedDic![indexPath.row].value
-                            destinationController.suraTitle.text = "Surah \(name)"
-                            destinationController.suraID = self.sortedDic![indexPath.row].key
-                            print("the key:\(self.sortedDic![indexPath.row].key)")
-                            destinationController.surasDict = self.resultDict
-                            destinationController.sortedDic = self.sortedDic
-                            
-                            
-                        } else {
-                        
-                        let name = self.suras[indexPath.row].name!
+                        let name = self.currentSuras[indexPath.row].name!
+                        let id = self.currentSuras[indexPath.row].id!
                         destinationController.suraTitle.text = "Surah \(name)"
-                        destinationController.suraID = self.suras[indexPath.row].id!
-                        destinationController.surasDict = self.surasDict
-                            let sortedDict = self.resultDict.sorted(by: <)
-                            print(sortedDict)
-                        destinationController.sortedDic = sortedDict
-                        
-                        
-                        }
+                        destinationController.suraID = id
+                        destinationController.currentSuras = self.currentSuras
+                        destinationController.index = indexPath.row
                        
                }
             }
-                
-
-                
          
             }
         }

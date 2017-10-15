@@ -32,9 +32,15 @@ class SurasPlayerVC: UIViewController {
     var player : AVPlayer!
     var playerItem:AVPlayerItem!
     var selectedSuraUrl: String?
+    
     var suraID: String = ""
-    var surasDict = [String: String]()
-    var sortedDic: [(key: String, value: String)]?
+    var currentSuras = [Sura]()
+    var index = 0
+    
+    var secondsText: String = "00"
+    var minutesText: String = "00"
+    var hoursText: String = "00"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,15 +62,17 @@ class SurasPlayerVC: UIViewController {
     }
     
     @IBAction func forwardbtn(_ sender: Any) {
-        restartUI()
-        self.progressUI()
-        self.updatePlayerView()
-        DispatchQueue.main.async {
         self.nextSura()
-        }
+        self.restartUI()
+        
     }
     
-    @IBOutlet weak var rewardbtn: UIButton!
+    
+    
+    @IBAction func rewardbtn(_ sender: Any) {
+        self.prevesSura()
+        self.restartUI()
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -123,15 +131,15 @@ class SurasPlayerVC: UIViewController {
             let duration: CMTime = self.playerItem.asset.duration
             print("duration: \(duration) ")
             let seconds : Int = Int(CMTimeGetSeconds(duration))%60
-            let secondsText = String(format: "%02d", seconds)
-            let minutesText = String(format: "%02d", Int(CMTimeGetSeconds(duration))/60%60)
+             self.secondsText = String(format: "%02d", seconds)
+             self.minutesText = String(format: "%02d", Int(CMTimeGetSeconds(duration))/60%60)
             let hours: Int = Int(CMTimeGetSeconds(duration))/3600
-            let hoursText = String(format: "%02d", hours)
+             self.hoursText = String(format: "%02d", hours)
             
             if hours > 00 {
-                self.fullTime.text = "\(hoursText):\(minutesText):\(secondsText)"
+                self.fullTime.text = "\(self.hoursText):\(self.minutesText):\(self.secondsText)"
             } else {
-                self.fullTime.text  = "\(minutesText):\(secondsText)"
+                self.fullTime.text  = "\(self.minutesText):\(self.secondsText)"
             }
             
             self.sliderItem.setThumbImage(UIImage(named: ""), for: .normal)
@@ -171,33 +179,53 @@ class SurasPlayerVC: UIViewController {
     }
     
     func restartUI() {
+        self.sliderItem.value = 0
         self.suraTitle.text = ""
         self.startTime.text = "00:00"
         self.fullTime.text = "00:00"
-        self.sliderItem.value = 00
+        
     }
     
+    
     func nextSura() {
-
-            var ID = Int(suraID)!
-        if ID < sortedDic!.count - 1 {
-            ID = ID+1
-            self.suraID = "\(sortedDic![ID].key)"
-            self.suraTitle.text = "Sura \(sortedDic![ID].value)"
-            print("suraID: \(sortedDic![ID].key)")
+        
+        if index < currentSuras.count - 1 {
+            index = index+1
         } else {
-            ID = 0
-            self.suraID = "\(sortedDic![ID].key)"
-            self.suraTitle.text = "Sura \(sortedDic![ID].value)"
+            index = 0
         }
+        self.suraID = currentSuras[index].id!
+        self.suraTitle.text = "Sura \(currentSuras[index].name!)"
         
         self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: self.suraID)
-
+        DispatchQueue.main.async {
+            self.progressUI()
+            self.updatePlayerView()
+        }
+    }
+    
+    func prevesSura() {
+        
+        if index < currentSuras.count - 1  && index != 0 {
+            index = index-1
+        } else if index == 0 {
+            index = currentSuras.count - 1
+        } else {
+            index = 0
+        }
+        self.suraID = currentSuras[index].id!
+        
+        self.suraTitle.text = "Sura \(currentSuras[index].name!)"
+        
+        self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: self.suraID)
+        DispatchQueue.main.async {
+            self.progressUI()
+            self.updatePlayerView()
+        }
     }
     
     @objc func handelSliderChange() {
         
-            //print(sliderItem.value)
             
             if let duration = player.currentItem?.duration {
                 let totalSeconds = CMTimeGetSeconds(duration)

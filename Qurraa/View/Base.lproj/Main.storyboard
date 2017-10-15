@@ -682,6 +682,9 @@
                                     <constraint firstAttribute="height" constant="30" id="ZiZ-aH-te9"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="reward"/>
+                                <connections>
+                                    <action selector="rewardbtn:" destination="nOp-Dp-dJd" eventType="touchUpInside" id="j3g-uL-mjb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDB-zc-3DH">
                                 <rect key="frame" x="10" y="534" width="33" height="30"/>
@@ -739,7 +742,6 @@
                         <outlet property="fullTime" destination="AXw-GR-eMD" id="d4G-Gz-q1O"/>
                         <outlet property="playAPause" destination="jUT-Oo-gNe" id="xbr-gm-Jb0"/>
                         <outlet property="reciterName" destination="rpP-Ec-uFB" id="2Kx-Dg-MhD"/>
-                        <outlet property="rewardbtn" destination="gFr-xq-NtE" id="5Ho-cx-E9N"/>
                         <outlet property="rewayaType" destination="w9I-pF-nlj" id="fMo-4N-5xs"/>
                         <outlet property="sliderItem" destination="Z60-pV-d8x" id="mXL-sa-AU0"/>
                         <outlet property="startTime" destination="geV-37-V2h" id="lKh-6b-TwY"/>

@@ -115,6 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 
                 
+                
             } else {
                 print("Error \(response.result.error)")
                 
@@ -294,6 +295,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let reciter = self.rcitersWithSections[indexPath.section][indexPath.row]
                 destinationController.readerName.text = reciter.name
                 destinationController.surasNumber = reciter.suras!
+                print(reciter.suras!)
+
                 destinationController.URL_SURAS_MP3 = reciter.server! 
             
             }

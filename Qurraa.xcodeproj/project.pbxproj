@@ -16,7 +16,6 @@
 		A97EE71C1F80F5EA0062B374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE71A1F80F5EA0062B374 /* LaunchScreen.storyboard */; };
 		A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */; };
 		A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF7B1F81100600CF1569 /* Reciter.swift */; };
-		A9E774881F88F007009EC3D4 /* SuraPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E774871F88F007009EC3D4 /* SuraPlayerViewController.swift */; };
 		A9F40EBA1F83B7DD00448EAC /* MenuCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F40EB91F83B7DD00448EAC /* MenuCustomCell.swift */; };
 		A9F40EBC1F83B8AC00448EAC /* MenuTCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F40EBB1F83B8AC00448EAC /* MenuTCV.swift */; };
 		A9F9BB051F84FB1A0067C293 /* CustomSuraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */; };
@@ -37,7 +36,6 @@
 		A9D52C421F89509600732879 /* Qurraa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Qurraa.entitlements; sourceTree = "<group>"; };
 		A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomReaderCell.swift; sourceTree = "<group>"; };
 		A9D6DF7B1F81100600CF1569 /* Reciter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reciter.swift; sourceTree = "<group>"; };
-		A9E774871F88F007009EC3D4 /* SuraPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuraPlayerViewController.swift; sourceTree = "<group>"; };
 		A9F40EB91F83B7DD00448EAC /* MenuCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCustomCell.swift; sourceTree = "<group>"; };
 		A9F40EBB1F83B8AC00448EAC /* MenuTCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTCV.swift; sourceTree = "<group>"; };
 		A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSuraCell.swift; sourceTree = "<group>"; };
@@ -131,7 +129,6 @@
 				A9F40EB91F83B7DD00448EAC /* MenuCustomCell.swift */,
 				A9F40EBB1F83B8AC00448EAC /* MenuTCV.swift */,
 				A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */,
-				A9E774871F88F007009EC3D4 /* SuraPlayerViewController.swift */,
 				A9F9BB061F8505DF0067C293 /* SuraViewController.swift */,
 				A904A4011F8F90EB00573855 /* SurasPlayerVC.swift */,
 			);
@@ -284,7 +281,6 @@
 				A97EE7121F80F5E90062B374 /* AppDelegate.swift in Sources */,
 				A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */,
 				A9F9BB071F8505DF0067C293 /* SuraViewController.swift in Sources */,
-				A9E774881F88F007009EC3D4 /* SuraPlayerViewController.swift in Sources */,
 				A9F40EBA1F83B7DD00448EAC /* MenuCustomCell.swift in Sources */,
 				A904A4021F8F90EB00573855 /* SurasPlayerVC.swift in Sources */,
 				A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */,

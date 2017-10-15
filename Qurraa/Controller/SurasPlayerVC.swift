@@ -75,6 +75,13 @@ class SurasPlayerVC: UIViewController {
     }
     
     
+    @IBAction func btnGoToFirstVCTapped(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "unwindSegueTo1", sender: nil)
+    }
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
     }

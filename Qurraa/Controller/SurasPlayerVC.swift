@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
-class SurasPlayerVC: UIViewController {
+class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var suraTitle: UILabel!
     @IBOutlet weak var reciterName: UILabel!
@@ -25,6 +25,7 @@ class SurasPlayerVC: UIViewController {
     
     @IBOutlet weak var sliderItem: UISlider!
     
+    @IBOutlet weak var suraView: UIView!
     
     
     
@@ -32,29 +33,37 @@ class SurasPlayerVC: UIViewController {
     var player : AVPlayer!
     var playerItem:AVPlayerItem!
     var selectedSuraUrl: String?
+    var timeObserverToken: Any?
     
     var suraID: String = ""
+    var reciterNameS: String = ""
+    var rewaya: String = ""
     var currentSuras = [Sura]()
     var index = 0
     
-    var secondsText: String = "00"
-    var minutesText: String = "00"
-    var hoursText: String = "00"
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bottomView.addSubview(volumeView)
- DispatchQueue.main.async {
-    self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: self.suraID)
-    self.updatePlayerView()
-    self.progressUI()
-    
-    
-        }
+      
         
+ DispatchQueue.main.async {
+    self.rewayaType.text = self.rewaya
+    self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: self.suraID)
+
+        }
     }
+    
+    
+    @IBAction func gestureTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "CustomSuras", sender: self)
+        
+       
+    }
+    
 
     @IBAction func ppTappedBtn(_ sender: UIButton) {
         
@@ -62,16 +71,28 @@ class SurasPlayerVC: UIViewController {
     }
     
     @IBAction func forwardbtn(_ sender: Any) {
+        if player != nil {
+            player.pause()
+            player.rate = 0
+            playAPause.setImage(UIImage(named:"play"), for: .normal)
+            player.removeTimeObserver(timeObserverToken!)
+        }
         self.nextSura()
-        self.restartUI()
-        
+        //self.restartUI()
+        self.updatePlayerView()
     }
     
     
     
     @IBAction func rewardbtn(_ sender: Any) {
+        if player != nil {
+            player.pause()
+            player.rate = 0
+            playAPause.setImage(UIImage(named:"play"), for: .normal)
+            player.removeTimeObserver(timeObserverToken!)
+        }
         self.prevesSura()
-        self.restartUI()
+        //self.restartUI()
     }
     
     
@@ -91,18 +112,20 @@ class SurasPlayerVC: UIViewController {
     }
     
     
+    
+    
     func playPauseAudio() {
         if player?.rate == 0 {
         player.play()
         player.volume = 1.0
-            DispatchQueue.main.sync {
-                playAPause.setImage(UIImage(named:"pause"), for: .normal)
-            }
+            playAPause.setImage(UIImage(named:"pause"), for: .normal)
+            
         
         } else if player.rate != 0 {
             player.pause()
             playAPause.setImage(UIImage(named:"play"), for: .normal)
             player.rate = 0
+            
         }
         
     }
@@ -125,8 +148,11 @@ class SurasPlayerVC: UIViewController {
 
                 self.playerItem = AVPlayerItem(url: url)
                 self.player = AVPlayer(playerItem: self.playerItem)
-                self.playPauseAudio()
-                
+                DispatchQueue.main.sync {
+                    self.playPauseAudio()
+                }
+                self.progressUI()
+                self.updatePlayerView()
                 
                 
             }
@@ -136,37 +162,36 @@ class SurasPlayerVC: UIViewController {
     func updatePlayerView() {
         DispatchQueue.main.async {
             let duration: CMTime = self.playerItem.asset.duration
-            print("duration: \(duration) ")
-            let seconds : Int = Int(CMTimeGetSeconds(duration))%60
-             self.secondsText = String(format: "%02d", seconds)
-             self.minutesText = String(format: "%02d", Int(CMTimeGetSeconds(duration))/60%60)
-            let hours: Int = Int(CMTimeGetSeconds(duration))/3600
-             self.hoursText = String(format: "%02d", hours)
+            let seconds = CMTimeGetSeconds(duration)
+            let secondsText = String(format: "%02d", Int(seconds)%60)
+            let minutesText = String(format: "%02d", Int(seconds)/60%60)
+            let hours: Int = Int(seconds)/3600
+            let hoursText = String(format: "%02d", hours)
             
             if hours > 00 {
-                self.fullTime.text = "\(self.hoursText):\(self.minutesText):\(self.secondsText)"
+                self.fullTime.text = "\(hoursText):\(minutesText):\(secondsText)"
             } else {
-                self.fullTime.text  = "\(self.minutesText):\(self.secondsText)"
+                self.fullTime.text  = "\(minutesText):\(secondsText)"
             }
             
             self.sliderItem.setThumbImage(UIImage(named: ""), for: .normal)
-            self.sliderItem.addTarget(self, action: 
+            self.sliderItem.addTarget(self, action:
                 #selector(self.handelSliderChange), for: .valueChanged)
+            
         }
     }
     
     
+    
     func progressUI() {
-        DispatchQueue.main.async {
-            
-        
         // track player progress
         let interval = CMTime(value: 1, timescale: 1)
-        self.player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { (progressTime) in
+        
+         timeObserverToken =   self.player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { (progressTime) in
             
             let seconds = CMTimeGetSeconds(progressTime)
             let secondsString = String(format: "%02d", Int(seconds)%60)
-            let minutesString = String(format: "%02d", Int(seconds)/60%60)
+            let minutesString = String(format: "%02d", Int(seconds)/60)
             let hoursString = String(format: "%02d", Int(seconds)/3600)
             if Int(hoursString)! > 00 {
                 
@@ -176,26 +201,25 @@ class SurasPlayerVC: UIViewController {
             }
             
             //lets move the slider thumb
-            if let duration = self.player.currentItem?.duration {
+             let duration = self.playerItem.asset.duration
                 let durationSeconds = CMTimeGetSeconds(duration)
+            
                 self.sliderItem.value = Float(seconds / durationSeconds)
-            }
+            
             
         })
-        }
-    }
-    
-    func restartUI() {
-        self.sliderItem.value = 0
-        self.suraTitle.text = ""
-        self.startTime.text = "00:00"
-        self.fullTime.text = "00:00"
         
     }
+    
+//    func restartUI() {
+//        self.suraTitle.text = ""
+//        self.startTime.text = "00:00"
+//        self.fullTime.text = "00:00"
+//
+//    }
     
     
     func nextSura() {
-        
         if index < currentSuras.count - 1 {
             index = index+1
         } else {
@@ -233,7 +257,7 @@ class SurasPlayerVC: UIViewController {
     
     @objc func handelSliderChange() {
         
-            
+        
             if let duration = player.currentItem?.duration {
                 let totalSeconds = CMTimeGetSeconds(duration)
                 let value = Float64(sliderItem.value) * totalSeconds
@@ -254,5 +278,27 @@ class SurasPlayerVC: UIViewController {
         stopedPlayerItem.seek(to: kCMTimeZero, completionHandler: nil)
         
     }
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CustomSuras" {
+            let destinationController = segue.destination as! SurasVC
+            
+            destinationController.currentSura = currentSuras
+            destinationController.reciterName = reciterNameS
+            destinationController.rewaya = rewaya
+            
+            
+            
+        }
+    }
+    
    
 }
+
+
+
+
+
+

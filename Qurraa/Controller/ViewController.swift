@@ -296,6 +296,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 destinationController.readerName.text = reciter.name
                 destinationController.surasNumber = reciter.suras!
                 print(reciter.suras!)
+                destinationController.rewaya = reciter.rewaya!
+                
 
                 destinationController.URL_SURAS_MP3 = reciter.server! 
             

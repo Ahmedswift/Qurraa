@@ -24,7 +24,7 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
     var surasNumber = [String]()
     var URL_SURAS_MP3: URL?
     var currentSuras = [Sura]()
-
+    var rewaya: String = ""
     
 
     override func viewDidLoad() {
@@ -156,13 +156,17 @@ class SuraViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if self.URL_SURAS_MP3 != nil {
                         
                         destinationController.selectedSuraUrl = "\(self.URL_SURAS_MP3!)"
-                        destinationController.reciterName.text = self.readerName.text
+                        destinationController.reciterNameS = self.readerName.text!
+                        
                         let name = self.currentSuras[indexPath.row].name!
                         let id = self.currentSuras[indexPath.row].id!
                         destinationController.suraTitle.text = "Surah \(name)"
                         destinationController.suraID = id
                         destinationController.currentSuras = self.currentSuras
                         destinationController.index = indexPath.row
+                        destinationController.rewaya = self.rewaya
+                        
+                        
                        
                }
             }

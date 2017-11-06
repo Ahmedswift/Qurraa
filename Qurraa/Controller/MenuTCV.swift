@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuTCV: UITableViewController {
+class MenuTCV: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var menuTableView: UITableView!
     
@@ -19,8 +19,11 @@ class MenuTCV: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        menuTableView.rowHeight = 100
+        menuTableView.estimatedRowHeight = menuTableView.rowHeight
         
-        
+        menuTableView.delegate = self
+        menuTableView.dataSource = self
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -37,18 +40,18 @@ class MenuTCV: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 7
+        return menutext.count
     }
 
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCustomCell", for: indexPath) as! MenuCustomCell
         
         cell.menuImg.image = UIImage(named: menuImage[indexPath.row])
@@ -58,6 +61,9 @@ class MenuTCV: UITableViewController {
     }
  
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: menutext[indexPath.row], sender: self)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

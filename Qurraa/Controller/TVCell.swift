@@ -1,26 +1,23 @@
 //
-//  CustomSuraSelectedCellTableViewCell.swift
+//  TVCell.swift
 //  Qurraa
 //
-//  Created by Ahmad Ahrbi on 27/01/1439 AH.
+//  Created by Ahmad Ahrbi on 10/02/1439 AH.
 //  Copyright © 1439 Ahmad Ahrbi. All rights reserved.
 //
 
 import UIKit
 
-class CustomSuraSelectedCellTableViewCell: UITableViewCell {
+class TVCell: UITableViewCell {
     
-    @IBOutlet weak var suraName: UILabel!
+    @IBOutlet weak var channelName: UILabel!
     
-    @IBOutlet weak var readerName: UILabel!
+    @IBOutlet weak var channelImg: UIImageView!
     
-    @IBOutlet weak var rewayaName: UILabel!
-    
-    
-    
+    @IBOutlet weak var PlayerIcon: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

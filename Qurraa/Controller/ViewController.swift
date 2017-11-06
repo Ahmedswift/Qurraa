@@ -20,7 +20,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var readerDict = [String: [String]]()
     var readerSectionTitles = [String]()
     var surasNumbers = [String]()
-    
     let collection = UILocalizedIndexedCollation.current()
     var rcitersWithSections = [[Reciter]]()
     var sectionTitles = [String]()
@@ -38,6 +37,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        menuButton.target = self.revealViewController()
+        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        self.revealViewController().rearViewRevealWidth = 140
     
         //TODO: Set yourself as the delegate and datasource here:
         readerTableView.delegate = self

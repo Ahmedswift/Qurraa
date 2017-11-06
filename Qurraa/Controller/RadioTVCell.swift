@@ -1,23 +1,19 @@
 //
-//  CustomSuraSelectedCellTableViewCell.swift
+//  RadioTVCell.swift
 //  Qurraa
 //
-//  Created by Ahmad Ahrbi on 27/01/1439 AH.
+//  Created by Ahmad Ahrbi on 14/02/1439 AH.
 //  Copyright © 1439 Ahmad Ahrbi. All rights reserved.
 //
 
 import UIKit
 
-class CustomSuraSelectedCellTableViewCell: UITableViewCell {
+class RadioTVCell: UITableViewCell {
     
-    @IBOutlet weak var suraName: UILabel!
+    @IBOutlet weak var radioname: UILabel!
+    @IBOutlet weak var radioImage: UIImageView!
     
-    @IBOutlet weak var readerName: UILabel!
-    
-    @IBOutlet weak var rewayaName: UILabel!
-    
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

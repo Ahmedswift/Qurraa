@@ -17,10 +17,6 @@ class Reciter: NSObject {
     var suras: [String]? = []
     var count: Int? = 0
     var server: URL?
-    
-    
-    
-    
 }
 
 
@@ -28,4 +24,9 @@ class Sura {
     var id: String? = ""
     var name: String? = ""
     
+}
+
+class Radio {
+    var Name: String? = ""
+    var URL: URL? 
 }

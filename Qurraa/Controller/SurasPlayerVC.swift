@@ -9,8 +9,10 @@
 import UIKit
 import AVFoundation
 import MediaPlayer
+import CoreData
+import Alamofire
 
-class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
+class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDelegate, ProgressViewDelegate{
     
     @IBOutlet weak var suraTitle: UILabel!
     @IBOutlet weak var reciterName: UILabel!
@@ -27,7 +29,13 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
     
     @IBOutlet weak var suraView: UIView!
     
+    @IBOutlet weak var downloadPro: UIButton!
     
+    @IBOutlet weak var randomSuraPop: UIButton!
+    
+    @IBOutlet weak var repeatPrp: UIButton!
+    
+    @IBOutlet weak var progressView: ProgressView!
     
     //
     var player : AVPlayer!
@@ -35,27 +43,70 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
     var selectedSuraUrl: String?
     var timeObserverToken: Any?
     
+    var completedURL: String = ""
     var suraID: String = ""
     var reciterNameS: String = ""
     var rewaya: String = ""
     var currentSuras = [Sura]()
     var index = 0
+    var flag = 0
+    var flag1 = 0
+    var sura: SurasMO?
+    var suraaProgress: CGFloat?
+    var suraa: Data?
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+            print("AVAudioSession Category Playback OK")
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+        /**
+         Set the animation style for progressView and font of the text
+         **/
+        progressView.animationStyle = kCAMediaTimingFunctionLinear
+        progressView.font = UIFont.systemFont(ofSize: 17)
         
-      
+        progressView.delegate = self
+        progressView.isUserInteractionEnabled  = true
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(self.startTheProgress(gesture:)))
+        self.progressView.addGestureRecognizer(tapgesture)
+        // Do any additional setup after loading the view, typically from a nib
         
  DispatchQueue.main.async {
     self.rewayaType.text = self.rewaya
     self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: self.suraID)
+    
 
         }
+        
     }
     
+    @objc func startTheProgress(gesture:UITapGestureRecognizer)
+    {
+        downloadUrl()
+        self.progressView.animationStyle = kCAMediaTimingFunctionLinear
+       
+        
+
+        
+    }
+    func finishedProgress(forCircle circle: ProgressView) {
+        if circle == progressView{
+            print("completed progress")
+        }
+    }
     
     @IBAction func gestureTapped(_ sender: Any) {
         
@@ -75,7 +126,9 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
             player.pause()
             player.rate = 0
             playAPause.setImage(UIImage(named:"play"), for: .normal)
-            player.removeTimeObserver(timeObserverToken!)
+            //player.removeTimeObserver(timeObserverToken!)
+            //NotificationCenter.default.removeObserver(self)
+            
         }
         self.nextSura()
         //self.restartUI()
@@ -89,7 +142,9 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
             player.pause()
             player.rate = 0
             playAPause.setImage(UIImage(named:"play"), for: .normal)
-            player.removeTimeObserver(timeObserverToken!)
+//            player.removeTimeObserver(timeObserverToken!)
+//            NotificationCenter.default.removeObserver(self)
+            
         }
         self.prevesSura()
         //self.restartUI()
@@ -99,6 +154,38 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
     @IBAction func btnGoToFirstVCTapped(_ sender: UIButton) {
         
         performSegue(withIdentifier: "unwindSegueTo1", sender: nil)
+       
+    }
+    
+    
+    @IBAction func randomSura(_ sender: UIButton) {
+        if flag == 0 {
+            randomSuraPop.setImage(UIImage(named:"random"), for: .normal)
+            flag = 1
+        } else if flag == 1 {
+            randomSuraPop.setImage(UIImage(named:"random_unclected"), for: .normal)
+            flag = 0
+        }
+        
+        
+    }
+    
+    
+    
+    @IBAction func repeatBtn(_ sender: UIButton) {
+        if flag1 == 0 {
+            repeatPrp.setImage(UIImage(named:"repeat"), for: .normal)
+            flag1 = 1
+        } else if flag1 == 1 {
+            repeatPrp.setImage(UIImage(named:"repeatUnselected"), for: .normal)
+            flag1 = 0
+        }
+    }
+    
+    
+    @IBAction func downloadBtn(_ sender: UIButton) {
+        downloadUrl()
+        
     }
     
     
@@ -109,6 +196,7 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
     
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self)
+        player.removeTimeObserver(timeObserverToken!)
     }
     
     
@@ -133,30 +221,27 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
     
     func parseURLToPlayer(url: String?, suraID: String) {
         
-        DispatchQueue.global().async {
-            var completedURL: String = ""
+        DispatchQueue.main.async {
+            
            if Int(suraID)! < 10 {
-            completedURL = "\(url!)/00\(suraID).mp3"
+            self.completedURL = "\(url!)/00\(suraID).mp3"
            } else if Int(suraID)! >= 10 && Int(suraID)! < 100 {
-            completedURL = "\(url!)/0\(suraID).mp3"
+            self.completedURL = "\(url!)/0\(suraID).mp3"
            } else {
-            completedURL = "\(url!)/\(suraID).mp3"
+            self.completedURL = "\(url!)/\(suraID).mp3"
             }
-            
-            
-            if let url = URL(string: completedURL) {
-
+            if let url = URL(string: self.completedURL) {
                 self.playerItem = AVPlayerItem(url: url)
                 self.player = AVPlayer(playerItem: self.playerItem)
-                DispatchQueue.main.sync {
-                    self.playPauseAudio()
-                }
+                self.playPauseAudio()
                 self.progressUI()
                 self.updatePlayerView()
-                
-                
+
             }
+         
         }
+        
+        
     }
     
     func updatePlayerView() {
@@ -184,14 +269,15 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
     
     
     func progressUI() {
+        
         // track player progress
         let interval = CMTime(value: 1, timescale: 1)
         
-         timeObserverToken =   self.player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { (progressTime) in
+            timeObserverToken =   player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { (progressTime) in
             
             let seconds = CMTimeGetSeconds(progressTime)
             let secondsString = String(format: "%02d", Int(seconds)%60)
-            let minutesString = String(format: "%02d", Int(seconds)/60)
+            let minutesString = String(format: "%02d", Int(seconds)/60%60)
             let hoursString = String(format: "%02d", Int(seconds)/3600)
             if Int(hoursString)! > 00 {
                 
@@ -211,16 +297,71 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
         
     }
     
-//    func restartUI() {
-//        self.suraTitle.text = ""
-//        self.startTime.text = "00:00"
-//        self.fullTime.text = "00:00"
+    func save() {
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+            sura = SurasMO(context: appDelegate.persistentContainer.viewContext)
+            sura?.sura = suraa
+            print(sura?.sura)
+            if let suraFile = sura?.sura {
+                print("the file dowloade, tha size is \(suraFile) ")
+                
+            }
+        }
+    }
+    
+    func downloadUrl() {
+        if let suraUrl = URL(string: completedURL){
+            
+            Alamofire.request(suraUrl).downloadProgress(closure: { (progress) in
+            
+                print(progress.fractionCompleted)
+                self.suraaProgress = CGFloat(progress.fractionCompleted)
+     self.progressView.setProgress(value: self.suraaProgress! , animationDuration: 5, completion: nil)
+                
+            }).responseData(completionHandler: { (response) in
+                print(response.result)
+                print(response.result.value)
+                //self.suraa = response.result.value
+                self.save()
+            
+                
+            })
+            
+            
+//            // then lets create your document folder url
+//            let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 //
-//    }
+//            // lets create your destination file url
+//            let destinationUrl = documentsDirectoryURL.appendingPathComponent(suraUrl.lastPathComponent)
+//
+//            // to check if it exists before downloading it
+//            if FileManager.default.fileExists(atPath: destinationUrl.path){
+//                print("The file already exists at path")
+//
+//                // if the file doesn't exist
+//            }else{
+//                // you can use NSURLSession.sharedSession to download the data asynchronously
+//                URLSession.shared.downloadTask(with: suraUrl, completionHandler: { (location, response, error) in
+//                    guard let location = location, error == nil else { return }
+//
+//                    do {
+//                        // after downloading your file you need to move it to your destination url
+//                        try FileManager.default.moveItem(at: location, to: destinationUrl)
+//                         print("File moved to documents folder")
+//                    } catch let error as NSError {
+//                        print(error.localizedDescription)
+//                    }
+//                }).resume()
+//            }
+        }
+    }
     
     
     func nextSura() {
-        if index < currentSuras.count - 1 {
+        if flag == 1 {
+            index = Int(arc4random())%currentSuras.count
+            
+        }else if index < currentSuras.count - 1 {
             index = index+1
         } else {
             index = 0
@@ -277,24 +418,34 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate{
         let stopedPlayerItem: AVPlayerItem = myNotification.object as! AVPlayerItem
         stopedPlayerItem.seek(to: kCMTimeZero, completionHandler: nil)
         
+        if flag1 == 1 {
+           self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: self.suraID)
+        }
+        
     }
     
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CustomSuras" {
+            
             let destinationController = segue.destination as! SurasVC
             
             destinationController.currentSura = currentSuras
             destinationController.reciterName = reciterNameS
             destinationController.rewaya = rewaya
-            
-            
+            destinationController.delegate = self
+            destinationController.suraName = suraTitle.text!
             
         }
     }
     
-   
+    func userSelectedNewSuraName(sura: String) {
+        self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: sura)
+    }
+    
+    
+    
 }
 
 

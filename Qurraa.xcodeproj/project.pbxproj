@@ -9,26 +9,50 @@
 /* Begin PBXBuildFile section */
 		29DE1BF9C1AABA1AEBBCF630 /* Pods_Qurraa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83CB9B0EEAFE4AECCF4870AF /* Pods_Qurraa.framework */; };
 		A904A4021F8F90EB00573855 /* SurasPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A904A4011F8F90EB00573855 /* SurasPlayerVC.swift */; };
+		A92BDF191F9F7ED0008EB6DA /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92BDF171F9F7ECF008EB6DA /* SWRevealViewController.m */; };
+		A935D2261FA7368000337F83 /* TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A935D2251FA7368000337F83 /* TVCell.swift */; };
+		A93918C21FA60B80005B7F79 /* TVVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93918C11FA60B80005B7F79 /* TVVC.swift */; };
+		A93918C41FA61452005B7F79 /* PlaylistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93918C31FA61452005B7F79 /* PlaylistVC.swift */; };
+		A93918C61FA615E1005B7F79 /* DownloadsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93918C51FA615E1005B7F79 /* DownloadsVC.swift */; };
+		A93918C81FA6166D005B7F79 /* RadioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93918C71FA6166D005B7F79 /* RadioVC.swift */; };
+		A93918CA1FA6168B005B7F79 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93918C91FA6168B005B7F79 /* SettingsVC.swift */; };
+		A93918CC1FA616A9005B7F79 /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93918CB1FA616A9005B7F79 /* AboutVC.swift */; };
 		A97EE7121F80F5E90062B374 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EE7111F80F5E90062B374 /* AppDelegate.swift */; };
 		A97EE7141F80F5E90062B374 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97EE7131F80F5E90062B374 /* ViewController.swift */; };
 		A97EE7171F80F5EA0062B374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE7151F80F5EA0062B374 /* Main.storyboard */; };
 		A97EE7191F80F5EA0062B374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97EE7181F80F5EA0062B374 /* Assets.xcassets */; };
 		A97EE71C1F80F5EA0062B374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE71A1F80F5EA0062B374 /* LaunchScreen.storyboard */; };
+		A9BF30E91F9A241300EBCCA8 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF30E81F9A241300EBCCA8 /* ProgressView.swift */; };
+		A9BF30EB1F9A248000EBCCA8 /* UIProgressLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF30EA1F9A248000EBCCA8 /* UIProgressLayer.swift */; };
+		A9BF30ED1F9A251200EBCCA8 /* ProgressViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF30EC1F9A251200EBCCA8 /* ProgressViewDelegate.swift */; };
 		A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */; };
 		A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF7B1F81100600CF1569 /* Reciter.swift */; };
+		A9D77BBF1F98C649006FA0F6 /* Qurraa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9D77BBD1F98C649006FA0F6 /* Qurraa.xcdatamodeld */; };
 		A9DA44C41F952024008605D6 /* SurasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA44C31F952024008605D6 /* SurasVC.swift */; };
+		A9F0440F1FA88C2C00477AA5 /* PlayerVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0440E1FA88C2C00477AA5 /* PlayerVideoVC.swift */; };
 		A9F17DBC1F961928001FC0C4 /* ScaleSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F17DBB1F961928001FC0C4 /* ScaleSegue.swift */; };
 		A9F17DBE1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F17DBD1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift */; };
 		A9F40EBA1F83B7DD00448EAC /* MenuCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F40EB91F83B7DD00448EAC /* MenuCustomCell.swift */; };
 		A9F40EBC1F83B8AC00448EAC /* MenuTCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F40EBB1F83B8AC00448EAC /* MenuTCV.swift */; };
 		A9F9BB051F84FB1A0067C293 /* CustomSuraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */; };
 		A9F9BB071F8505DF0067C293 /* SuraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9BB061F8505DF0067C293 /* SuraViewController.swift */; };
+		A9FA10601FAC8064001E547A /* RadioTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA105F1FAC8064001E547A /* RadioTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		404FB1139A34E8A059C883B7 /* Pods-Qurraa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qurraa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa.release.xcconfig"; sourceTree = "<group>"; };
 		83CB9B0EEAFE4AECCF4870AF /* Pods_Qurraa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Qurraa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A904A4011F8F90EB00573855 /* SurasPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurasPlayerVC.swift; sourceTree = "<group>"; };
+		A92BDF161F9F7ECF008EB6DA /* Qurraa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Qurraa-Bridging-Header.h"; sourceTree = "<group>"; };
+		A92BDF171F9F7ECF008EB6DA /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A92BDF181F9F7ED0008EB6DA /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A935D2251FA7368000337F83 /* TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCell.swift; sourceTree = "<group>"; };
+		A93918C11FA60B80005B7F79 /* TVVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVVC.swift; sourceTree = "<group>"; };
+		A93918C31FA61452005B7F79 /* PlaylistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistVC.swift; sourceTree = "<group>"; };
+		A93918C51FA615E1005B7F79 /* DownloadsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsVC.swift; sourceTree = "<group>"; };
+		A93918C71FA6166D005B7F79 /* RadioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioVC.swift; sourceTree = "<group>"; };
+		A93918C91FA6168B005B7F79 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		A93918CB1FA616A9005B7F79 /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		A97EE70E1F80F5E90062B374 /* Qurraa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Qurraa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97EE7111F80F5E90062B374 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A97EE7131F80F5E90062B374 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,16 +60,22 @@
 		A97EE7181F80F5EA0062B374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97EE71B1F80F5EA0062B374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A97EE71D1F80F5EA0062B374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9BF30E81F9A241300EBCCA8 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		A9BF30EA1F9A248000EBCCA8 /* UIProgressLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProgressLayer.swift; sourceTree = "<group>"; };
+		A9BF30EC1F9A251200EBCCA8 /* ProgressViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewDelegate.swift; sourceTree = "<group>"; };
 		A9D52C421F89509600732879 /* Qurraa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Qurraa.entitlements; sourceTree = "<group>"; };
 		A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomReaderCell.swift; sourceTree = "<group>"; };
 		A9D6DF7B1F81100600CF1569 /* Reciter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reciter.swift; sourceTree = "<group>"; };
+		A9D77BBE1F98C649006FA0F6 /* Qurraa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Qurraa.xcdatamodel; sourceTree = "<group>"; };
 		A9DA44C31F952024008605D6 /* SurasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurasVC.swift; sourceTree = "<group>"; };
+		A9F0440E1FA88C2C00477AA5 /* PlayerVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVideoVC.swift; sourceTree = "<group>"; };
 		A9F17DBB1F961928001FC0C4 /* ScaleSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleSegue.swift; sourceTree = "<group>"; };
 		A9F17DBD1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSuraSelectedCellTableViewCell.swift; sourceTree = "<group>"; };
 		A9F40EB91F83B7DD00448EAC /* MenuCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCustomCell.swift; sourceTree = "<group>"; };
 		A9F40EBB1F83B8AC00448EAC /* MenuTCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTCV.swift; sourceTree = "<group>"; };
 		A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSuraCell.swift; sourceTree = "<group>"; };
 		A9F9BB061F8505DF0067C293 /* SuraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuraViewController.swift; sourceTree = "<group>"; };
+		A9FA105F1FAC8064001E547A /* RadioTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioTVCell.swift; sourceTree = "<group>"; };
 		E06340A47D44D9D6E410486F /* Pods-Qurraa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qurraa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +135,7 @@
 				A97EE7251F80F6110062B374 /* Controller */,
 				A97EE7181F80F5EA0062B374 /* Assets.xcassets */,
 				A97EE71D1F80F5EA0062B374 /* Info.plist */,
+				A9D77BBD1F98C649006FA0F6 /* Qurraa.xcdatamodeld */,
 			);
 			path = Qurraa;
 			sourceTree = "<group>";
@@ -122,6 +153,9 @@
 			children = (
 				A97EE7151F80F5EA0062B374 /* Main.storyboard */,
 				A97EE71A1F80F5EA0062B374 /* LaunchScreen.storyboard */,
+				A9BF30E81F9A241300EBCCA8 /* ProgressView.swift */,
+				A9BF30EA1F9A248000EBCCA8 /* UIProgressLayer.swift */,
+				A9BF30EC1F9A251200EBCCA8 /* ProgressViewDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,6 +163,9 @@
 		A97EE7251F80F6110062B374 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A92BDF181F9F7ED0008EB6DA /* SWRevealViewController.h */,
+				A92BDF171F9F7ECF008EB6DA /* SWRevealViewController.m */,
+				A92BDF161F9F7ECF008EB6DA /* Qurraa-Bridging-Header.h */,
 				A97EE7111F80F5E90062B374 /* AppDelegate.swift */,
 				A97EE7131F80F5E90062B374 /* ViewController.swift */,
 				A9D6DF791F8108DB00CF1569 /* CustomReaderCell.swift */,
@@ -140,6 +177,15 @@
 				A9DA44C31F952024008605D6 /* SurasVC.swift */,
 				A9F17DBB1F961928001FC0C4 /* ScaleSegue.swift */,
 				A9F17DBD1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift */,
+				A93918C11FA60B80005B7F79 /* TVVC.swift */,
+				A935D2251FA7368000337F83 /* TVCell.swift */,
+				A9F0440E1FA88C2C00477AA5 /* PlayerVideoVC.swift */,
+				A93918C31FA61452005B7F79 /* PlaylistVC.swift */,
+				A93918C51FA615E1005B7F79 /* DownloadsVC.swift */,
+				A93918C71FA6166D005B7F79 /* RadioVC.swift */,
+				A9FA105F1FAC8064001E547A /* RadioTVCell.swift */,
+				A93918C91FA6168B005B7F79 /* SettingsVC.swift */,
+				A93918CB1FA616A9005B7F79 /* AboutVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,17 +330,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9BF30ED1F9A251200EBCCA8 /* ProgressViewDelegate.swift in Sources */,
 				A9F9BB051F84FB1A0067C293 /* CustomSuraCell.swift in Sources */,
 				A9F40EBC1F83B8AC00448EAC /* MenuTCV.swift in Sources */,
 				A97EE7141F80F5E90062B374 /* ViewController.swift in Sources */,
+				A93918C61FA615E1005B7F79 /* DownloadsVC.swift in Sources */,
 				A9DA44C41F952024008605D6 /* SurasVC.swift in Sources */,
+				A93918CC1FA616A9005B7F79 /* AboutVC.swift in Sources */,
 				A97EE7121F80F5E90062B374 /* AppDelegate.swift in Sources */,
 				A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */,
+				A9FA10601FAC8064001E547A /* RadioTVCell.swift in Sources */,
+				A935D2261FA7368000337F83 /* TVCell.swift in Sources */,
 				A9F9BB071F8505DF0067C293 /* SuraViewController.swift in Sources */,
 				A9F40EBA1F83B7DD00448EAC /* MenuCustomCell.swift in Sources */,
 				A9F17DBC1F961928001FC0C4 /* ScaleSegue.swift in Sources */,
+				A93918CA1FA6168B005B7F79 /* SettingsVC.swift in Sources */,
+				A9BF30EB1F9A248000EBCCA8 /* UIProgressLayer.swift in Sources */,
+				A92BDF191F9F7ED0008EB6DA /* SWRevealViewController.m in Sources */,
+				A93918C21FA60B80005B7F79 /* TVVC.swift in Sources */,
+				A9D77BBF1F98C649006FA0F6 /* Qurraa.xcdatamodeld in Sources */,
+				A93918C41FA61452005B7F79 /* PlaylistVC.swift in Sources */,
 				A904A4021F8F90EB00573855 /* SurasPlayerVC.swift in Sources */,
+				A9BF30E91F9A241300EBCCA8 /* ProgressView.swift in Sources */,
 				A9F17DBE1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift in Sources */,
+				A93918C81FA6166D005B7F79 /* RadioVC.swift in Sources */,
+				A9F0440F1FA88C2C00477AA5 /* PlayerVideoVC.swift in Sources */,
 				A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,7 +500,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AA.Qurraa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Qurraa/Controller/Qurraa-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,7 +519,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.AA.Qurraa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Qurraa/Controller/Qurraa-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -487,6 +547,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A9D77BBD1F98C649006FA0F6 /* Qurraa.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A9D77BBE1F98C649006FA0F6 /* Qurraa.xcdatamodel */,
+			);
+			currentVersion = A9D77BBE1F98C649006FA0F6 /* Qurraa.xcdatamodel */;
+			path = Qurraa.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A97EE7061F80F5E90062B374 /* Project object */;
 }

@@ -22,6 +22,7 @@
 		A97EE7171F80F5EA0062B374 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE7151F80F5EA0062B374 /* Main.storyboard */; };
 		A97EE7191F80F5EA0062B374 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97EE7181F80F5EA0062B374 /* Assets.xcassets */; };
 		A97EE71C1F80F5EA0062B374 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A97EE71A1F80F5EA0062B374 /* LaunchScreen.storyboard */; };
+		A9ABE1AD1FB0D02D00B4B2DA /* DownloadsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ABE1AC1FB0D02D00B4B2DA /* DownloadsTVC.swift */; };
 		A9BF30E91F9A241300EBCCA8 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF30E81F9A241300EBCCA8 /* ProgressView.swift */; };
 		A9BF30EB1F9A248000EBCCA8 /* UIProgressLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF30EA1F9A248000EBCCA8 /* UIProgressLayer.swift */; };
 		A9BF30ED1F9A251200EBCCA8 /* ProgressViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BF30EC1F9A251200EBCCA8 /* ProgressViewDelegate.swift */; };
@@ -60,6 +61,7 @@
 		A97EE7181F80F5EA0062B374 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97EE71B1F80F5EA0062B374 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A97EE71D1F80F5EA0062B374 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9ABE1AC1FB0D02D00B4B2DA /* DownloadsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsTVC.swift; sourceTree = "<group>"; };
 		A9BF30E81F9A241300EBCCA8 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		A9BF30EA1F9A248000EBCCA8 /* UIProgressLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProgressLayer.swift; sourceTree = "<group>"; };
 		A9BF30EC1F9A251200EBCCA8 /* ProgressViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewDelegate.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				A9F0440E1FA88C2C00477AA5 /* PlayerVideoVC.swift */,
 				A93918C31FA61452005B7F79 /* PlaylistVC.swift */,
 				A93918C51FA615E1005B7F79 /* DownloadsVC.swift */,
+				A9ABE1AC1FB0D02D00B4B2DA /* DownloadsTVC.swift */,
 				A93918C71FA6166D005B7F79 /* RadioVC.swift */,
 				A9FA105F1FAC8064001E547A /* RadioTVCell.swift */,
 				A93918C91FA6168B005B7F79 /* SettingsVC.swift */,
@@ -354,6 +357,7 @@
 				A9BF30E91F9A241300EBCCA8 /* ProgressView.swift in Sources */,
 				A9F17DBE1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift in Sources */,
 				A93918C81FA6166D005B7F79 /* RadioVC.swift in Sources */,
+				A9ABE1AD1FB0D02D00B4B2DA /* DownloadsTVC.swift in Sources */,
 				A9F0440F1FA88C2C00477AA5 /* PlayerVideoVC.swift in Sources */,
 				A9D6DF7A1F8108DB00CF1569 /* CustomReaderCell.swift in Sources */,
 			);

@@ -39,6 +39,7 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
     
     //
     var player : AVPlayer!
+    var audioPlayer: AVAudioPlayer!
     var playerItem:AVPlayerItem!
     var selectedSuraUrl: String?
     var timeObserverToken: Any?
@@ -51,15 +52,17 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
     var index = 0
     var flag = 0
     var flag1 = 0
-    var sura: SurasMO?
+    var suraCD: SurasMO?
     var suraaProgress: CGFloat?
     var suraa: Data?
+    var suraDownloaded: Data?
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressView.isHidden = true
         do {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
             print("AVAudioSession Category Playback OK")
@@ -86,8 +89,11 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
         
  DispatchQueue.main.async {
     self.rewayaType.text = self.rewaya
+    if self.selectedSuraUrl != nil {
     self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: self.suraID)
-    
+    } else {
+        self.playSura()
+    }
 
         }
         
@@ -97,11 +103,27 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
     {
         downloadUrl()
         self.progressView.animationStyle = kCAMediaTimingFunctionLinear
-       
-        
-
-        
     }
+    
+    func playSura() {
+        //let url = Bundle.main.url(forResource: "sura", withExtension: ".mp3")!
+        do {
+        //let data Data = try Data
+           try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+            try AVAudioSession.sharedInstance().setActive(true)
+            audioPlayer = try AVAudioPlayer(data: suraDownloaded!, fileTypeHint: AVFileType.mp3.rawValue)
+            audioPlayer.prepareToPlay()
+            //audioPlayer.play()
+            playPauseAudio()
+            //playerItem = AVPlayerItem(Data
+            
+            
+        } catch {
+            print("Error!")
+        }
+    }
+    
+    
     func finishedProgress(forCircle circle: ProgressView) {
         if circle == progressView{
             print("completed progress")
@@ -184,6 +206,8 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
     
     
     @IBAction func downloadBtn(_ sender: UIButton) {
+        downloadPro.isHidden = true
+        progressView.isHidden = false
         downloadUrl()
         
     }
@@ -191,18 +215,23 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
     
     
     override func viewWillAppear(_ animated: Bool) {
+        if playerItem != nil {
         NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: playerItem)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        if player != nil {
         NotificationCenter.default.removeObserver(self)
         player.removeTimeObserver(timeObserverToken!)
+        }
     }
     
     
     
     
     func playPauseAudio() {
+        if player != nil {
         if player?.rate == 0 {
         player.play()
         player.volume = 1.0
@@ -214,6 +243,21 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
             playAPause.setImage(UIImage(named:"play"), for: .normal)
             player.rate = 0
             
+        }
+        }else {
+            if audioPlayer.isPlaying {
+                
+                audioPlayer.pause()
+                playAPause.setImage(UIImage(named:"play"), for: .normal)
+                
+                
+            }else
+            {
+               
+                audioPlayer.play()
+                playAPause.setImage(UIImage(named:"pause"), for: .normal)
+                
+            }
         }
         
     }
@@ -297,34 +341,51 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
         
     }
     
-    func save() {
-        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-            sura = SurasMO(context: appDelegate.persistentContainer.viewContext)
-            sura?.sura = suraa
-            print(sura?.sura)
-            if let suraFile = sura?.sura {
-                print("the file dowloade, tha size is \(suraFile) ")
-                
-            }
-        }
-    }
+//    func save() {
+//
+//        let myNewSuras = SurasMO(context: context)
+//
+//
+////        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+////            suraCD = SurasMO(context: appDelegate.persistentContainer.viewContext)
+////            suraCD?.sura = suraa
+////            print(suraCD?.sura)
+////            if let suraFile = suraCD?.sura {
+////                print("the file dowloade, tha size is \(suraFile) ")
+////
+////            }
+////        }
+//    }
     
     func downloadUrl() {
         if let suraUrl = URL(string: completedURL){
             
             Alamofire.request(suraUrl).downloadProgress(closure: { (progress) in
             
-                print(progress.fractionCompleted)
-                self.suraaProgress = CGFloat(progress.fractionCompleted)
+                print(progress.fractionCompleted * 100)
+                self.suraaProgress = CGFloat(progress.fractionCompleted * 100)
      self.progressView.setProgress(value: self.suraaProgress! , animationDuration: 5, completion: nil)
                 
+                
             }).responseData(completionHandler: { (response) in
+                
                 print(response.result)
                 print(response.result.value)
                 //self.suraa = response.result.value
-                self.save()
-            
+                //self.save()
+                 let myNewSuras = SurasMO(context: context)
+                myNewSuras.suraName = self.suraTitle.text
+                myNewSuras.reciter = self.reciterName.text
+                myNewSuras.rewaya = self.rewaya
+                myNewSuras.sura = response.result.value
                 
+                do {
+                ad.saveContext()
+                    print("Saved , Done!")
+                    self.progressView.isHidden = true
+                } catch {
+                    print("Error")
+                }
             })
             
             

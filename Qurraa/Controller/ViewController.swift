@@ -137,10 +137,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func updateRecitersData(json: JSON) {
         
-       
-        
-        
-        
         for reciterJSON in json["reciters"].arrayValue {
             let reciter = Reciter()
             
@@ -154,17 +150,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
            
             reciter.count = reciterJSON["count"].intValue
             self.rciters.append(reciter)
-            
-            
-            
     }
-      
-        
-        
         DispatchQueue.main.async {
-            
             self.readerTableView.reloadData()
-            
         }
     }
 
@@ -196,12 +184,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         for rciter in 0..<rciters.count {
             let reader = rciters[rciter].name!
-            
-            
-            
-            
-            
-            
+         
         }
     }
    
@@ -299,7 +282,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 let reciter = self.rcitersWithSections[indexPath.section][indexPath.row]
                 destinationController.readerName.text = reciter.name
                 destinationController.surasNumber = reciter.suras!
-                print(reciter.suras!)
                 destinationController.rewaya = reciter.rewaya!
                 
 

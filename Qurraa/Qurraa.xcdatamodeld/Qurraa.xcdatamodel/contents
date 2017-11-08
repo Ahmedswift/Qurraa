@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Suras" representedClassName="SurasMO" syncable="YES" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MySuras" representedClassName="SurasMO" syncable="YES" codeGenerationType="class">
         <attribute name="reciter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rewaya" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="sura" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="sura" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="suraName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Suras" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="MySuras" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>

@@ -11,7 +11,9 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
-
+    
+    @IBOutlet var bottomView: UIView!
+    
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var readerTableView: UITableView!
@@ -37,6 +39,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         menuButton.target = self.revealViewController()
         menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
@@ -296,7 +299,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     
-    @IBAction func unwindToFirstVC(segue:UIStoryboardSegue) { }
+    @IBAction func unwindToFirstVC(segue:UIStoryboardSegue) {
+        
+      
+    }
+    
+//    override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+//        let segue = unwindToFirst(identifier: unwindSegue.identifier, source: unwindSegue.source, destination: self)
+//        segue.perform()
+//    }
 
 }
 

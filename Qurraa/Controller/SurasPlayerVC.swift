@@ -92,6 +92,7 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
     if self.selectedSuraUrl != nil {
     self.parseURLToPlayer(url: self.selectedSuraUrl, suraID: self.suraID)
     } else {
+        self.downloadPro.isHidden = true
         self.playSura()
     }
 
@@ -176,6 +177,8 @@ class SurasPlayerVC: UIViewController, UIGestureRecognizerDelegate, ChangeSuraDe
     @IBAction func btnGoToFirstVCTapped(_ sender: UIButton) {
         
         performSegue(withIdentifier: "unwindSegueTo1", sender: nil)
+        
+       self.view.transform =  CGAffineTransform(translationX: 0, y: 200)
        
     }
     

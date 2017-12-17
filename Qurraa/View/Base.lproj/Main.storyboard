@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D3p-tH-Krj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D3p-tH-Krj">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="36W-Hm-hp4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.32941176470588235" green="0.67450980392156867" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -83,27 +83,41 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="snd-FO-Pas"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mhJ-1N-u7u" customClass="BottomPlayer" customModule="Qurraa" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="mhJ-1N-u7u" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IiA-F2-ewC"/>
                             <constraint firstItem="36W-Hm-hp4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gpW-kW-ArA"/>
-                            <constraint firstItem="36W-Hm-hp4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="hZV-IY-EGZ"/>
+                            <constraint firstItem="mhJ-1N-u7u" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="h9d-tD-jH1"/>
+                            <constraint firstItem="36W-Hm-hp4" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-56" id="hZV-IY-EGZ"/>
+                            <constraint firstItem="mhJ-1N-u7u" firstAttribute="top" secondItem="36W-Hm-hp4" secondAttribute="bottom" id="kjl-jk-RkU"/>
+                            <constraint firstItem="mhJ-1N-u7u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mDU-3R-PQN"/>
                             <constraint firstItem="36W-Hm-hp4" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="nge-bt-EXq"/>
                             <constraint firstItem="36W-Hm-hp4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rdN-TX-mgQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="mhJ-1N-u7u"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Rciters" id="aQo-MX-huR">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="8M9-XT-Ros"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomView" destination="mhJ-1N-u7u" id="aGu-HH-glS"/>
                         <outlet property="menuButton" destination="8M9-XT-Ros" id="aOE-Ps-7Fh"/>
                         <outlet property="readerTableView" destination="36W-Hm-hp4" id="mOS-GR-7Vk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="185"/>
+            <point key="canvasLocation" x="933.60000000000002" y="280.20989505247377"/>
         </scene>
         <!--Sura View Controller-->
         <scene sceneID="mDA-Er-t74">
@@ -193,7 +207,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="suraName" destination="gNL-DG-gT1" id="Zf4-so-x9Z"/>
-                                            <segue destination="nOp-Dp-dJd" kind="show" identifier="SurasPlayerVC" id="gNp-we-AHQ"/>
+                                            <segue destination="nOp-Dp-dJd" kind="showDetail" identifier="SurasPlayerVC" id="gNp-we-AHQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -552,6 +566,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="v5Q-6K-eaK"/>
                     </view>
+                    <navigationItem key="navigationItem" id="etr-o2-YTt"/>
                     <connections>
                         <outlet property="bottomView" destination="GGO-14-Xoz" id="MwU-hI-H3A"/>
                         <outlet property="downloadPro" destination="w3d-uv-dKi" id="0xG-uY-9aU"/>
@@ -567,6 +582,7 @@
                         <outlet property="suraTitle" destination="hbi-zc-Lpk" id="upj-8G-CJw"/>
                         <outlet property="suraView" destination="r30-6k-26d" id="DVG-bJ-NRl"/>
                         <outlet property="volumeView" destination="hBW-ah-1JX" id="ULj-VR-ohK"/>
+                        <segue destination="Qdc-5X-yCz" kind="unwind" unwindAction="unwindToFirstVCWithSegue:" id="9mK-2m-Mie"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vek-oD-1RL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -833,11 +849,11 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="downloadsCell" rowHeight="52" id="VGJ-Qz-usp" customClass="DownloadsTVC" customModule="Qurraa" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="downloadsCell" rowHeight="52" id="VGJ-Qz-usp" customClass="DownloadsTVC" customModule="Qurraa" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VGJ-Qz-usp" id="htg-Gm-KII">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="51.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arabic-art-3" translatesAutoresizingMaskIntoConstraints="NO" id="hx8-Nz-aIG">
@@ -848,7 +864,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygU-CL-kDy">
-                                                    <rect key="frame" x="52" y="7" width="315" height="36"/>
+                                                    <rect key="frame" x="52" y="7" width="282" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="fM9-Mq-Tec"/>
                                                     </constraints>
@@ -870,7 +886,7 @@
                                         <connections>
                                             <outlet property="suraImage" destination="hx8-Nz-aIG" id="jU6-E6-fq3"/>
                                             <outlet property="suraName" destination="ygU-CL-kDy" id="UJi-tK-jg9"/>
-                                            <segue destination="nOp-Dp-dJd" kind="showDetail" identifier="SurasPlayerVC" action="showViewController:sender:" id="rD9-BA-nv3"/>
+                                            <segue destination="nOp-Dp-dJd" kind="showDetail" identifier="SurasPlayerVC" id="DpT-hI-jDZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -882,13 +898,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCS-r4-Sbg">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Downloads yet !" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK3-m6-Fot">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There's no download ! 😕" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK3-m6-Fot">
                                         <rect key="frame" x="8" y="277" width="359" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="49" id="pGv-nv-Idu"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="0.90266481164383561" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -913,11 +929,6 @@
                             <constraint firstItem="XXm-hQ-9Jp" firstAttribute="bottom" secondItem="07n-75-8Eg" secondAttribute="bottom" id="x0O-Wi-ZZ2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="07n-75-8Eg"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="cCS-r4-Sbg"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="nwx-no-oH4">
                         <barButtonItem key="leftBarButtonItem" image="menu" id="2Vd-Zw-4qU"/>

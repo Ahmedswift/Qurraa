@@ -30,6 +30,8 @@
 		A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D6DF7B1F81100600CF1569 /* Reciter.swift */; };
 		A9D77BBF1F98C649006FA0F6 /* Qurraa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A9D77BBD1F98C649006FA0F6 /* Qurraa.xcdatamodeld */; };
 		A9DA44C41F952024008605D6 /* SurasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DA44C31F952024008605D6 /* SurasVC.swift */; };
+		A9E237BB1FC590E200A4321E /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E237BA1FC590E200A4321E /* SoundManager.swift */; };
+		A9E237BD1FC592F900A4321E /* MainPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E237BC1FC592F900A4321E /* MainPlayer.swift */; };
 		A9F0440F1FA88C2C00477AA5 /* PlayerVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F0440E1FA88C2C00477AA5 /* PlayerVideoVC.swift */; };
 		A9F17DBC1F961928001FC0C4 /* ScaleSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F17DBB1F961928001FC0C4 /* ScaleSegue.swift */; };
 		A9F17DBE1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F17DBD1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift */; };
@@ -38,6 +40,9 @@
 		A9F9BB051F84FB1A0067C293 /* CustomSuraCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */; };
 		A9F9BB071F8505DF0067C293 /* SuraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F9BB061F8505DF0067C293 /* SuraViewController.swift */; };
 		A9FA10601FAC8064001E547A /* RadioTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FA105F1FAC8064001E547A /* RadioTVCell.swift */; };
+		A9FB20691FB7209900EED846 /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9FB20681FB7209900EED846 /* BottomView.xib */; };
+		A9FB206B1FB72BEB00EED846 /* BottomPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FB206A1FB72BEB00EED846 /* BottomPlayer.swift */; };
+		A9FCA1BB1FC8268D003D0EE8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FCA1BA1FC8268D003D0EE8 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +75,8 @@
 		A9D6DF7B1F81100600CF1569 /* Reciter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reciter.swift; sourceTree = "<group>"; };
 		A9D77BBE1F98C649006FA0F6 /* Qurraa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Qurraa.xcdatamodel; sourceTree = "<group>"; };
 		A9DA44C31F952024008605D6 /* SurasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurasVC.swift; sourceTree = "<group>"; };
+		A9E237BA1FC590E200A4321E /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		A9E237BC1FC592F900A4321E /* MainPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPlayer.swift; sourceTree = "<group>"; };
 		A9F0440E1FA88C2C00477AA5 /* PlayerVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVideoVC.swift; sourceTree = "<group>"; };
 		A9F17DBB1F961928001FC0C4 /* ScaleSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleSegue.swift; sourceTree = "<group>"; };
 		A9F17DBD1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSuraSelectedCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -78,6 +85,9 @@
 		A9F9BB041F84FB1A0067C293 /* CustomSuraCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSuraCell.swift; sourceTree = "<group>"; };
 		A9F9BB061F8505DF0067C293 /* SuraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuraViewController.swift; sourceTree = "<group>"; };
 		A9FA105F1FAC8064001E547A /* RadioTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioTVCell.swift; sourceTree = "<group>"; };
+		A9FB20681FB7209900EED846 /* BottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
+		A9FB206A1FB72BEB00EED846 /* BottomPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomPlayer.swift; sourceTree = "<group>"; };
+		A9FCA1BA1FC8268D003D0EE8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E06340A47D44D9D6E410486F /* Pods-Qurraa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Qurraa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Qurraa/Pods-Qurraa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				A9D6DF7B1F81100600CF1569 /* Reciter.swift */,
+				A9FCA1BA1FC8268D003D0EE8 /* Constants.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +169,9 @@
 				A9BF30E81F9A241300EBCCA8 /* ProgressView.swift */,
 				A9BF30EA1F9A248000EBCCA8 /* UIProgressLayer.swift */,
 				A9BF30EC1F9A251200EBCCA8 /* ProgressViewDelegate.swift */,
+				A9FB20681FB7209900EED846 /* BottomView.xib */,
+				A9F17DBB1F961928001FC0C4 /* ScaleSegue.swift */,
+				A9E237BC1FC592F900A4321E /* MainPlayer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,7 +191,6 @@
 				A9F9BB061F8505DF0067C293 /* SuraViewController.swift */,
 				A904A4011F8F90EB00573855 /* SurasPlayerVC.swift */,
 				A9DA44C31F952024008605D6 /* SurasVC.swift */,
-				A9F17DBB1F961928001FC0C4 /* ScaleSegue.swift */,
 				A9F17DBD1F96409A001FC0C4 /* CustomSuraSelectedCellTableViewCell.swift */,
 				A93918C11FA60B80005B7F79 /* TVVC.swift */,
 				A935D2251FA7368000337F83 /* TVCell.swift */,
@@ -189,6 +202,8 @@
 				A9FA105F1FAC8064001E547A /* RadioTVCell.swift */,
 				A93918C91FA6168B005B7F79 /* SettingsVC.swift */,
 				A93918CB1FA616A9005B7F79 /* AboutVC.swift */,
+				A9FB206A1FB72BEB00EED846 /* BottomPlayer.swift */,
+				A9E237BA1FC590E200A4321E /* SoundManager.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -267,6 +282,7 @@
 				A97EE71C1F80F5EA0062B374 /* LaunchScreen.storyboard in Resources */,
 				A97EE7191F80F5EA0062B374 /* Assets.xcassets in Resources */,
 				A97EE7171F80F5EA0062B374 /* Main.storyboard in Resources */,
+				A9FB20691FB7209900EED846 /* BottomView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,15 +352,18 @@
 				A9BF30ED1F9A251200EBCCA8 /* ProgressViewDelegate.swift in Sources */,
 				A9F9BB051F84FB1A0067C293 /* CustomSuraCell.swift in Sources */,
 				A9F40EBC1F83B8AC00448EAC /* MenuTCV.swift in Sources */,
+				A9E237BB1FC590E200A4321E /* SoundManager.swift in Sources */,
 				A97EE7141F80F5E90062B374 /* ViewController.swift in Sources */,
 				A93918C61FA615E1005B7F79 /* DownloadsVC.swift in Sources */,
 				A9DA44C41F952024008605D6 /* SurasVC.swift in Sources */,
 				A93918CC1FA616A9005B7F79 /* AboutVC.swift in Sources */,
 				A97EE7121F80F5E90062B374 /* AppDelegate.swift in Sources */,
+				A9FCA1BB1FC8268D003D0EE8 /* Constants.swift in Sources */,
 				A9D6DF7C1F81100600CF1569 /* Reciter.swift in Sources */,
 				A9FA10601FAC8064001E547A /* RadioTVCell.swift in Sources */,
 				A935D2261FA7368000337F83 /* TVCell.swift in Sources */,
 				A9F9BB071F8505DF0067C293 /* SuraViewController.swift in Sources */,
+				A9E237BD1FC592F900A4321E /* MainPlayer.swift in Sources */,
 				A9F40EBA1F83B7DD00448EAC /* MenuCustomCell.swift in Sources */,
 				A9F17DBC1F961928001FC0C4 /* ScaleSegue.swift in Sources */,
 				A93918CA1FA6168B005B7F79 /* SettingsVC.swift in Sources */,
@@ -352,6 +371,7 @@
 				A92BDF191F9F7ED0008EB6DA /* SWRevealViewController.m in Sources */,
 				A93918C21FA60B80005B7F79 /* TVVC.swift in Sources */,
 				A9D77BBF1F98C649006FA0F6 /* Qurraa.xcdatamodeld in Sources */,
+				A9FB206B1FB72BEB00EED846 /* BottomPlayer.swift in Sources */,
 				A93918C41FA61452005B7F79 /* PlaylistVC.swift in Sources */,
 				A904A4021F8F90EB00573855 /* SurasPlayerVC.swift in Sources */,
 				A9BF30E91F9A241300EBCCA8 /* ProgressView.swift in Sources */,

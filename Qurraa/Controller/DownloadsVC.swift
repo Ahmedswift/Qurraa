@@ -67,8 +67,31 @@ class DownloadsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+              let sura = listSuras[indexPath.row]
+                context.delete(sura)
+                listSuras.remove(at: indexPath.row)
+            
+//
+            do {
+                try context.save()
+            } catch {
+                print("Error")
+            }
+            
+        }
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        if listSuras.count == 0 {
+            downloadView.isHidden = false
+        }
+        
+    }
+    
     func loadNodtes() {
         let fechRequest:NSFetchRequest<SurasMO> = SurasMO.fetchRequest()
+        
         do {
             listSuras = try context.fetch(fechRequest)
             tableView.reloadData()
@@ -76,6 +99,11 @@ class DownloadsVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             print("Error")
         }
     }
+    
+
+    @IBAction func unwindToFirstVC(segue:UIStoryboardSegue) { }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if  segue.identifier == "SurasPlayerVC" {

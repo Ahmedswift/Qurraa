@@ -36,6 +36,29 @@ class ScaleSegue: UIStoryboardSegue {
 
 }
 
+class unwindToFirst: UIStoryboardSegue {
+    
+    
+    override func perform() {
+        scale()
+    }
+    
+    func scale() {
+        let toViewController = self.destination
+        let fromViewController = self.source
+        
+        fromViewController.view.superview?.insertSubview(toViewController.view, at: 1)
+        
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+            fromViewController.view.transform = CGAffineTransform(translationX: 0, y: 200)
+        }) { (seccuss) in
+            fromViewController.dismiss(animated: false, completion: nil)
+        }
+        
+    }
+
+}
+
 
 
 
